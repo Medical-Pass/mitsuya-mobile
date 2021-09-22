@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'main_view_model.dart';
 
 class MainPage extends HookWidget {
-  MainPage({Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,16 @@ class MainPage extends HookWidget {
           label: 'ホーム',
         ),
         const BottomNavigationBarItem(
-          icon: Icon(Icons.event_note),
-          label: 'お気に入り',
+          icon: Icon(Icons.notifications),
+          label: 'お知らせ',
         ),
         BottomNavigationBarItem(
-          icon: const Icon(Icons.account_circle),
-          label: 'メモ',
+          icon: const Icon(Icons.wallpaper),
+          label: '協働一覧',
+        ),
+        BottomNavigationBarItem(
+          icon: const Icon(Icons.person),
+          label: 'マイページ',
         ),
       ];
 
@@ -39,6 +43,7 @@ class MainPage extends HookWidget {
             notifier.buildOffstageNavigator(0),
             notifier.buildOffstageNavigator(1),
             notifier.buildOffstageNavigator(2),
+            notifier.buildOffstageNavigator(3),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

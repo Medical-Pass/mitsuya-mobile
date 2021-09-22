@@ -1,10 +1,10 @@
 #echo -n "Press directory name: "
 #read str
 
-for i in home
+for i in team mypage notification cowork
 do
 
-cd  /Users/ookubotakumi/AndroidStudioProjects/base_app/lib/pages
+cd  /Users/ookubotakumi/AndroidStudioProjects/mitsuya-mobile/lib/pages
 
 mkdir -p $i
 cd $i

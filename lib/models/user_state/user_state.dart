@@ -1,0 +1,14 @@
+/// ユーザーの状態
+enum UserState {
+  // 初期化中
+  waiting,
+
+  // 未ログイン
+  noLogin,
+
+  // メンバー
+  member,
+
+  // サロンメンバー
+  admin,
+}
