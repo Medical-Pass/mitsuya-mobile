@@ -1,0 +1,37 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+const kPrimaryColor = Color(0xFFFEAF66);
+const kPointColor = Color(0xFFEC6A2C);
+const kBlack1Color = Color(0xFF333333);
+const kGray1Color = Color(0xFF595959);
+const kGray2Color = Color(0xFFB8B8B8);
+const kGray3Color = Color(0xFFF3F3F3);
+const kBlue1Color = Color(0xFF007AFF);
+const kGradation10Color = Color(0xFFFFB37C);
+const kGradation11Color = Color(0xFFFFD37E);
+const kWhite = Color(0xFFFFFFFF);
+
+//calendar color
+const kCalendarColors = {
+  'reservation': Color(0xFF9AEBA2),
+  'mendan_memo': Color(0xFF98C9FF),
+  'category': Color(0xFFD3A0FB),
+  'clinic_column': Color(0xFFFFB2B2),
+  'gakkai': Color(0xFFCFCFCF),
+};
+
+ThemeData get appTheme {
+  final base = ThemeData.light();
+  return base.copyWith(
+    primaryColor: kPrimaryColor,
+    accentColor: kPrimaryColor,
+    buttonTheme: base.buttonTheme.copyWith(
+      buttonColor: kPrimaryColor,
+      textTheme: ButtonTextTheme.normal,
+    ),
+    floatingActionButtonTheme: base.floatingActionButtonTheme.copyWith(
+      backgroundColor: kPrimaryColor,
+    ),
+  );
+}

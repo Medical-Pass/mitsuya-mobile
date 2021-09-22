@@ -1,0 +1,73 @@
+# 全てのユーザーが所属するコレクション
+users: # collection
+  documentId: userId = auth.uid
+  userId: string
+  email: string
+  password: string
+  name: string
+  imageUrl: string
+  birthday: string
+  gender: string
+  role: string
+  job: string
+  passionForService: string
+  comment: string
+  teamId: string
+  executiveId: string
+  inviteMember: bool
+  checkNotification: bool
+  transparency: bool
+  createdAt: timestamp
+  updatedAt: timestamp
+
+# チームのコレクション
+teams: # collection
+  documentId: auto
+  createdAt: timestamp
+  updatedAt: timestamp
+  users:
+    documentId: auto
+    userId: userId = auth.uid
+  targets:
+    documentId: auto
+    targetId: string
+  genres:
+    documentId: auto
+    genreId: string
+  structures:
+    documentId: auto
+    structureId: string
+  purposes:
+    documentId: auto
+    structureId: string
+  finalGroups:
+    documentId: auto
+    creater: string
+
+#target
+targets:
+  documentId: auto
+  name: string
+
+#genres
+genres:
+  documentId: auto
+  name: string
+
+#structures
+structures:
+  documentId: auto
+  name: string
+
+#purposes
+purposes:
+  documentId: auto
+  name: string
+
+#finalGroups
+finalGroups:
+  documentId: auto
+  name: string
+
+# 第２リリースで追加する?
+# readStatus, ContactFromOperation , ConversationGroup, CoworkOperation, Message,

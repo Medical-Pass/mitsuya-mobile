@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "1013677397846",
+    "project_id": "ipsa-counseling",
+    "storage_bucket": "ipsa-counseling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013677397846:android:e743dd35c9fe52b48f68f7",
+        "android_client_info": {
+          "package_name": "jp.or.ipsa.counseling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013677397846-ah800s9mr4s36pqdc1cpi3vh91i5dmqc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jp.or.ipsa.counseling",
+            "certificate_hash": "6f03f2a5801120fe367ecb279c5eb455139d1c66"
+          }
+        },
+        {
+          "client_id": "1013677397846-fem7r670dul01k8n9ifh5dm1jmvkmkge.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jp.or.ipsa.counseling",
+            "certificate_hash": "4fbd4778946ab4cf4e4a327615e53bf2260bc0dd"
+          }
+        },
+        {
+          "client_id": "1013677397846-huvkml0toh2hje1u6d7q37coe6at5f8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx0sKGKtr4o6WH2osQXmCv2i8mVrVkinQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013677397846-huvkml0toh2hje1u6d7q37coe6at5f8e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1013677397846-r81kadpoojceav6o2jpq38vtgv7ggglv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.or.ipsa.counseling"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
