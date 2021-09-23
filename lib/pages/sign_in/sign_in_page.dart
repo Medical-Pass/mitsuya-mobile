@@ -1,5 +1,6 @@
 import 'package:base_app/pages/sign_in/sign_in_view_model.dart';
 import 'package:base_app/pages/sign_up/sign_up_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../colors.dart';
 import '../../constants.dart';
 import '../../validation.dart';
+import '../../widgets/show_err_dialog.dart';
 import '../main/main_page.dart';
 
 class SignInPage extends HookWidget {
@@ -25,8 +27,7 @@ class SignInPage extends HookWidget {
       },
       child: Scaffold(
           appBar: AppBar(
-            title: const Text('UserRegistPage',
-                style: TextStyle(color: kBlack1Color)),
+            title: const Text('ログイン', style: TextStyle(color: kBlack1Color)),
           ),
           body: SingleChildScrollView(
               child: Container(
@@ -39,6 +40,7 @@ class SignInPage extends HookWidget {
                         const Text('メールアドレス'),
                         const SizedBox(height: 10),
                         TextFormField(
+                            initialValue: 'takubon3140@gmail.com',
                             key: viewModel.emailKey,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
@@ -55,7 +57,8 @@ class SignInPage extends HookWidget {
                         const Text('パスワード'),
                         const SizedBox(height: 10),
                         TextFormField(
-                            // key: viewModel.passwordKey,
+                            initialValue: 'u835113b',
+                            key: viewModel.passwordKey,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             validator: (String? value) {
@@ -70,22 +73,32 @@ class SignInPage extends HookWidget {
                         const SizedBox(height: 100),
                         ElevatedButton(
                           onPressed: () async {
-                            await Navigator.push(
-                                context,
-                                MaterialPageRoute<void>(
-                                  builder: (BuildContext context) => MainPage(),
-                                  fullscreenDialog: false,
-                                ));
-
                             if (viewModel.emailKey.currentState!.validate() &&
                                 viewModel.passwordKey.currentState!
                                     .validate()) {
-                              // await viewModel.onUpdate(editId!);
-                              // await Navigator.push(context,
-                              //   MaterialPageRoute<void>(
-                              //   builder: (BuildContext context)=> const NewRegistration(),
-                              //   fullscreenDialog: false,
-                              // ));
+                              try {
+                                UserCredential userCredential =
+                                    await FirebaseAuth.instance
+                                        .signInWithEmailAndPassword(
+                                            email: viewModel
+                                                .emailKey.currentState!.value!,
+                                            password: viewModel.passwordKey
+                                                .currentState!.value!);
+
+                                await Navigator.push(
+                                    context,
+                                    MaterialPageRoute<void>(
+                                      builder: (BuildContext context) =>
+                                          MainPage(),
+                                      fullscreenDialog: false,
+                                    ));
+                              } on FirebaseAuthException catch (e) {
+                                if (e.code == 'user-not-found') {
+                                  showErrDialog(context, '登録されている情報はありません。');
+                                } else if (e.code == 'wrong-password') {
+                                  showErrDialog(context, 'パスワードが間違っています。');
+                                }
+                              }
                             }
                           },
                           style: ElevatedButton.styleFrom(
@@ -106,27 +119,29 @@ class SignInPage extends HookWidget {
                                     fontWeight: FontWeight.bold)),
                           ),
                         ),
-                        const SizedBox(height: 50),
-                        RichText(
-                          text: TextSpan(
-                            style: TextStyle(color: Colors.black),
-                            children: [
-                              TextSpan(
-                                text: 'すでにアカウントを持っている方はこちら',
-                                style:
-                                    TextStyle(color: Colors.blue, fontSize: 16),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () async {
-                                    await Navigator.push(
-                                        context,
-                                        MaterialPageRoute<void>(
-                                          builder: (BuildContext context) =>
-                                              const SignUpPage(),
-                                          fullscreenDialog: false,
-                                        ));
-                                  },
-                              )
-                            ],
+                        const SizedBox(height: 20),
+                        Center(
+                          child: RichText(
+                            text: TextSpan(
+                              style: TextStyle(color: Colors.black),
+                              children: [
+                                TextSpan(
+                                  text: '新規登録の方はこちら',
+                                  style: TextStyle(
+                                      color: Colors.blue, fontSize: 16),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () async {
+                                      await Navigator.push(
+                                          context,
+                                          MaterialPageRoute<void>(
+                                            builder: (BuildContext context) =>
+                                                const SignUpPage(),
+                                            fullscreenDialog: false,
+                                          ));
+                                    },
+                                )
+                              ],
+                            ),
                           ),
                         )
                       ])))),
