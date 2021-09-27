@@ -32,7 +32,7 @@ class MypageIchiranPage extends HookWidget {
                         context,
                         MaterialPageRoute<void>(
                             builder: (BuildContext context) => SignInPage()),
-                        (_) => false);
+                        (_) => true);
                   })
             ],
           ),

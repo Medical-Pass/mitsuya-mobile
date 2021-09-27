@@ -22,7 +22,18 @@ class _$UserTearOff {
 
   _User call(
       {required String id,
-      required String text,
+      required String name,
+      DateTime? birthday,
+      String? gender,
+      String? role,
+      String? job,
+      String? passionForService,
+      String? comment,
+      String? teamId,
+      String? executiveId,
+      bool? inviteMember,
+      bool? checkNotification,
+      bool? transparency,
       @BoolIntConverter()
       @JsonKey(name: 'is_checked')
           bool isChecked = false,
@@ -34,7 +45,18 @@ class _$UserTearOff {
           DateTime? updatedAt}) {
     return _User(
       id: id,
-      text: text,
+      name: name,
+      birthday: birthday,
+      gender: gender,
+      role: role,
+      job: job,
+      passionForService: passionForService,
+      comment: comment,
+      teamId: teamId,
+      executiveId: executiveId,
+      inviteMember: inviteMember,
+      checkNotification: checkNotification,
+      transparency: transparency,
       isChecked: isChecked,
       createdAt: createdAt,
       updatedAt: updatedAt,
@@ -52,7 +74,18 @@ const $User = _$UserTearOff();
 /// @nodoc
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  DateTime? get birthday => throw _privateConstructorUsedError;
+  String? get gender => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
+  String? get job => throw _privateConstructorUsedError;
+  String? get passionForService => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  String? get teamId => throw _privateConstructorUsedError;
+  String? get executiveId => throw _privateConstructorUsedError;
+  bool? get inviteMember => throw _privateConstructorUsedError;
+  bool? get checkNotification => throw _privateConstructorUsedError;
+  bool? get transparency => throw _privateConstructorUsedError;
   @BoolIntConverter()
   @JsonKey(name: 'is_checked')
   bool get isChecked => throw _privateConstructorUsedError;
@@ -74,7 +107,18 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      String text,
+      String name,
+      DateTime? birthday,
+      String? gender,
+      String? role,
+      String? job,
+      String? passionForService,
+      String? comment,
+      String? teamId,
+      String? executiveId,
+      bool? inviteMember,
+      bool? checkNotification,
+      bool? transparency,
       @BoolIntConverter()
       @JsonKey(name: 'is_checked')
           bool isChecked,
@@ -97,7 +141,18 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? text = freezed,
+    Object? name = freezed,
+    Object? birthday = freezed,
+    Object? gender = freezed,
+    Object? role = freezed,
+    Object? job = freezed,
+    Object? passionForService = freezed,
+    Object? comment = freezed,
+    Object? teamId = freezed,
+    Object? executiveId = freezed,
+    Object? inviteMember = freezed,
+    Object? checkNotification = freezed,
+    Object? transparency = freezed,
     Object? isChecked = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -107,10 +162,54 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: text == freezed
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
+      birthday: birthday == freezed
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      gender: gender == freezed
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: role == freezed
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+      job: job == freezed
+          ? _value.job
+          : job // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passionForService: passionForService == freezed
+          ? _value.passionForService
+          : passionForService // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comment: comment == freezed
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      teamId: teamId == freezed
+          ? _value.teamId
+          : teamId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      executiveId: executiveId == freezed
+          ? _value.executiveId
+          : executiveId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      inviteMember: inviteMember == freezed
+          ? _value.inviteMember
+          : inviteMember // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      checkNotification: checkNotification == freezed
+          ? _value.checkNotification
+          : checkNotification // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      transparency: transparency == freezed
+          ? _value.transparency
+          : transparency // ignore: cast_nullable_to_non_nullable
+              as bool?,
       isChecked: isChecked == freezed
           ? _value.isChecked
           : isChecked // ignore: cast_nullable_to_non_nullable
@@ -134,7 +233,18 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call(
       {String id,
-      String text,
+      String name,
+      DateTime? birthday,
+      String? gender,
+      String? role,
+      String? job,
+      String? passionForService,
+      String? comment,
+      String? teamId,
+      String? executiveId,
+      bool? inviteMember,
+      bool? checkNotification,
+      bool? transparency,
       @BoolIntConverter()
       @JsonKey(name: 'is_checked')
           bool isChecked,
@@ -158,7 +268,18 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? text = freezed,
+    Object? name = freezed,
+    Object? birthday = freezed,
+    Object? gender = freezed,
+    Object? role = freezed,
+    Object? job = freezed,
+    Object? passionForService = freezed,
+    Object? comment = freezed,
+    Object? teamId = freezed,
+    Object? executiveId = freezed,
+    Object? inviteMember = freezed,
+    Object? checkNotification = freezed,
+    Object? transparency = freezed,
     Object? isChecked = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -168,10 +289,54 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      text: text == freezed
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
+      birthday: birthday == freezed
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      gender: gender == freezed
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: role == freezed
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+      job: job == freezed
+          ? _value.job
+          : job // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passionForService: passionForService == freezed
+          ? _value.passionForService
+          : passionForService // ignore: cast_nullable_to_non_nullable
+              as String?,
+      comment: comment == freezed
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      teamId: teamId == freezed
+          ? _value.teamId
+          : teamId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      executiveId: executiveId == freezed
+          ? _value.executiveId
+          : executiveId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      inviteMember: inviteMember == freezed
+          ? _value.inviteMember
+          : inviteMember // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      checkNotification: checkNotification == freezed
+          ? _value.checkNotification
+          : checkNotification // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      transparency: transparency == freezed
+          ? _value.transparency
+          : transparency // ignore: cast_nullable_to_non_nullable
+              as bool?,
       isChecked: isChecked == freezed
           ? _value.isChecked
           : isChecked // ignore: cast_nullable_to_non_nullable
@@ -194,7 +359,18 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 class _$_User extends _User {
   _$_User(
       {required this.id,
-      required this.text,
+      required this.name,
+      this.birthday,
+      this.gender,
+      this.role,
+      this.job,
+      this.passionForService,
+      this.comment,
+      this.teamId,
+      this.executiveId,
+      this.inviteMember,
+      this.checkNotification,
+      this.transparency,
       @BoolIntConverter() @JsonKey(name: 'is_checked') this.isChecked = false,
       @DateTimeStringConverter() @JsonKey(name: 'created_at') this.createdAt,
       @DateTimeStringConverter() @JsonKey(name: 'updated_at') this.updatedAt})
@@ -206,7 +382,29 @@ class _$_User extends _User {
   @override
   final String id;
   @override
-  final String text;
+  final String name;
+  @override
+  final DateTime? birthday;
+  @override
+  final String? gender;
+  @override
+  final String? role;
+  @override
+  final String? job;
+  @override
+  final String? passionForService;
+  @override
+  final String? comment;
+  @override
+  final String? teamId;
+  @override
+  final String? executiveId;
+  @override
+  final bool? inviteMember;
+  @override
+  final bool? checkNotification;
+  @override
+  final bool? transparency;
   @override
   @BoolIntConverter()
   @JsonKey(name: 'is_checked')
@@ -222,7 +420,7 @@ class _$_User extends _User {
 
   @override
   String toString() {
-    return 'User(id: $id, text: $text, isChecked: $isChecked, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'User(id: $id, name: $name, birthday: $birthday, gender: $gender, role: $role, job: $job, passionForService: $passionForService, comment: $comment, teamId: $teamId, executiveId: $executiveId, inviteMember: $inviteMember, checkNotification: $checkNotification, transparency: $transparency, isChecked: $isChecked, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -231,8 +429,37 @@ class _$_User extends _User {
         (other is _User &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.text, text) ||
-                const DeepCollectionEquality().equals(other.text, text)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.birthday, birthday) ||
+                const DeepCollectionEquality()
+                    .equals(other.birthday, birthday)) &&
+            (identical(other.gender, gender) ||
+                const DeepCollectionEquality().equals(other.gender, gender)) &&
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)) &&
+            (identical(other.job, job) ||
+                const DeepCollectionEquality().equals(other.job, job)) &&
+            (identical(other.passionForService, passionForService) ||
+                const DeepCollectionEquality()
+                    .equals(other.passionForService, passionForService)) &&
+            (identical(other.comment, comment) ||
+                const DeepCollectionEquality()
+                    .equals(other.comment, comment)) &&
+            (identical(other.teamId, teamId) ||
+                const DeepCollectionEquality().equals(other.teamId, teamId)) &&
+            (identical(other.executiveId, executiveId) ||
+                const DeepCollectionEquality()
+                    .equals(other.executiveId, executiveId)) &&
+            (identical(other.inviteMember, inviteMember) ||
+                const DeepCollectionEquality()
+                    .equals(other.inviteMember, inviteMember)) &&
+            (identical(other.checkNotification, checkNotification) ||
+                const DeepCollectionEquality()
+                    .equals(other.checkNotification, checkNotification)) &&
+            (identical(other.transparency, transparency) ||
+                const DeepCollectionEquality()
+                    .equals(other.transparency, transparency)) &&
             (identical(other.isChecked, isChecked) ||
                 const DeepCollectionEquality()
                     .equals(other.isChecked, isChecked)) &&
@@ -248,7 +475,18 @@ class _$_User extends _User {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(text) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(birthday) ^
+      const DeepCollectionEquality().hash(gender) ^
+      const DeepCollectionEquality().hash(role) ^
+      const DeepCollectionEquality().hash(job) ^
+      const DeepCollectionEquality().hash(passionForService) ^
+      const DeepCollectionEquality().hash(comment) ^
+      const DeepCollectionEquality().hash(teamId) ^
+      const DeepCollectionEquality().hash(executiveId) ^
+      const DeepCollectionEquality().hash(inviteMember) ^
+      const DeepCollectionEquality().hash(checkNotification) ^
+      const DeepCollectionEquality().hash(transparency) ^
       const DeepCollectionEquality().hash(isChecked) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(updatedAt);
@@ -267,7 +505,18 @@ class _$_User extends _User {
 abstract class _User extends User {
   factory _User(
       {required String id,
-      required String text,
+      required String name,
+      DateTime? birthday,
+      String? gender,
+      String? role,
+      String? job,
+      String? passionForService,
+      String? comment,
+      String? teamId,
+      String? executiveId,
+      bool? inviteMember,
+      bool? checkNotification,
+      bool? transparency,
       @BoolIntConverter()
       @JsonKey(name: 'is_checked')
           bool isChecked,
@@ -284,7 +533,29 @@ abstract class _User extends User {
   @override
   String get id => throw _privateConstructorUsedError;
   @override
-  String get text => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @override
+  DateTime? get birthday => throw _privateConstructorUsedError;
+  @override
+  String? get gender => throw _privateConstructorUsedError;
+  @override
+  String? get role => throw _privateConstructorUsedError;
+  @override
+  String? get job => throw _privateConstructorUsedError;
+  @override
+  String? get passionForService => throw _privateConstructorUsedError;
+  @override
+  String? get comment => throw _privateConstructorUsedError;
+  @override
+  String? get teamId => throw _privateConstructorUsedError;
+  @override
+  String? get executiveId => throw _privateConstructorUsedError;
+  @override
+  bool? get inviteMember => throw _privateConstructorUsedError;
+  @override
+  bool? get checkNotification => throw _privateConstructorUsedError;
+  @override
+  bool? get transparency => throw _privateConstructorUsedError;
   @override
   @BoolIntConverter()
   @JsonKey(name: 'is_checked')

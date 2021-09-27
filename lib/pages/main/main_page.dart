@@ -1,3 +1,4 @@
+import 'package:base_app/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -15,7 +16,9 @@ class MainPage extends HookWidget {
     List<BottomNavigationBarItem> getBottomSheet() {
       var tmpList = [
         const BottomNavigationBarItem(
-          icon: Icon(Icons.home_filled),
+          icon: Icon(
+            Icons.home_filled,
+          ),
           label: 'ホーム',
         ),
         const BottomNavigationBarItem(
@@ -48,6 +51,7 @@ class MainPage extends HookWidget {
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: getBottomSheet(),
+          selectedItemColor: kBlack1Color,
           type: BottomNavigationBarType.fixed,
           currentIndex: useProvider(
                   provider.state.select((MainViewModelState state) => state))

@@ -373,6 +373,27 @@
             </list>
           </value>
         </entry>
+        <entry key="firebase_storage">
+          <value>
+            <list>
+              <option value="$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.0.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="firebase_storage_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_platform_interface-4.0.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="firebase_storage_web">
+          <value>
+            <list>
+              <option value="$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.0.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="fixnum">
           <value>
             <list>
@@ -384,6 +405,13 @@
           <value>
             <list>
               <option value="$USER_HOME$/development/flutter/packages/flutter/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_datetime_picker">
+          <value>
+            <list>
+              <option value="$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.1/lib" />
             </list>
           </value>
         </entry>
@@ -601,6 +629,13 @@
           <value>
             <list>
               <option value="$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/image-3.0.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="image_cropper">
+          <value>
+            <list>
+              <option value="$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_cropper-1.4.1/lib" />
             </list>
           </value>
         </entry>
@@ -1318,7 +1353,11 @@
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-10.0.0/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.0.0/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_web-2.0.0/lib" />
+      <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.0.3/lib" />
+      <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_platform_interface-4.0.2/lib" />
+      <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.0.2/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-1.0.0/lib" />
+      <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.1/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_dotenv-5.0.2/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_gen_core-3.1.1/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_gen_runner-3.1.1/lib" />
@@ -1347,6 +1386,7 @@
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/http_multi_server-3.0.1/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.0/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/image-3.0.2/lib" />
+      <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_cropper-1.4.1/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.7.4/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_for_web-2.0.0/lib" />
       <root url="file://$USER_HOME$/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-2.1.0/lib" />

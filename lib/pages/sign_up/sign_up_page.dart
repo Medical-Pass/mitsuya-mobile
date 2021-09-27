@@ -58,7 +58,8 @@ class SignUpPage extends HookWidget {
                       const Text('パスワード'),
                       const SizedBox(height: 10),
                       TextFormField(
-                          initialValue: 'u835113b',
+                          obscureText: true,
+                          initialValue: '012345',
                           key: viewModel.passwordKey,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (String? value) {

@@ -1,5 +1,4 @@
 import 'package:base_app/pages/sign_in/sign_in_view_model.dart';
-import 'package:base_app/pages/sign_up/sign_up_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -57,7 +56,8 @@ class SignInPage extends HookWidget {
                         const Text('パスワード'),
                         const SizedBox(height: 10),
                         TextFormField(
-                            initialValue: 'u835113b',
+                            initialValue: '012345',
+                            obscureText: true,
                             key: viewModel.passwordKey,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
@@ -131,13 +131,7 @@ class SignInPage extends HookWidget {
                                       color: Colors.blue, fontSize: 16),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () async {
-                                      await Navigator.push(
-                                          context,
-                                          MaterialPageRoute<void>(
-                                            builder: (BuildContext context) =>
-                                                const SignUpPage(),
-                                            fullscreenDialog: false,
-                                          ));
+                                      Navigator.pop(context);
                                     },
                                 )
                               ],

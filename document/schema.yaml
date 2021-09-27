@@ -28,45 +28,42 @@ teams: # collection
   users:
     documentId: auto
     userId: userId = auth.uid
-  targets:
-    documentId: auto
-    targetId: string
-  genres:
-    documentId: auto
-    genreId: string
-  structures:
-    documentId: auto
-    structureId: string
-  purposes:
-    documentId: auto
-    structureId: string
-  finalGroups:
-    documentId: auto
-    creater: string
+  targetId: string
+
+  genreId: string
+  structureId: string
+  purposeId: string
+  finalGroupId: string
+
 
 #target
 targets:
   documentId: auto
+  targetId: string
   name: string
 
 #genres
 genres:
   documentId: auto
+  genreId: string
   name: string
 
 #structures
 structures:
   documentId: auto
+  structureId: string
   name: string
 
 #purposes
 purposes:
   documentId: auto
+  purposeId: string
   name: string
 
 #finalGroups
 finalGroups:
   documentId: auto
+  finalGroupId: string
   name: string
 
 # 第２リリースで追加する?

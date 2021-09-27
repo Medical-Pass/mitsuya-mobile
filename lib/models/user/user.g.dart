@@ -9,7 +9,20 @@ part of 'user.dart';
 _$_User _$_$_UserFromJson(Map<String, dynamic> json) {
   return _$_User(
     id: json['id'] as String,
-    text: json['text'] as String,
+    name: json['name'] as String,
+    birthday: json['birthday'] == null
+        ? null
+        : DateTime.parse(json['birthday'] as String),
+    gender: json['gender'] as String?,
+    role: json['role'] as String?,
+    job: json['job'] as String?,
+    passionForService: json['passionForService'] as String?,
+    comment: json['comment'] as String?,
+    teamId: json['teamId'] as String?,
+    executiveId: json['executiveId'] as String?,
+    inviteMember: json['inviteMember'] as bool?,
+    checkNotification: json['checkNotification'] as bool?,
+    transparency: json['transparency'] as bool?,
     isChecked: const BoolIntConverter().fromJson(json['is_checked'] as int),
     createdAt: json['created_at'] == null
         ? null
@@ -22,7 +35,18 @@ _$_User _$_$_UserFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_UserToJson(_$_User instance) => <String, dynamic>{
       'id': instance.id,
-      'text': instance.text,
+      'name': instance.name,
+      'birthday': instance.birthday?.toIso8601String(),
+      'gender': instance.gender,
+      'role': instance.role,
+      'job': instance.job,
+      'passionForService': instance.passionForService,
+      'comment': instance.comment,
+      'teamId': instance.teamId,
+      'executiveId': instance.executiveId,
+      'inviteMember': instance.inviteMember,
+      'checkNotification': instance.checkNotification,
+      'transparency': instance.transparency,
       'is_checked': const BoolIntConverter().toJson(instance.isChecked),
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),

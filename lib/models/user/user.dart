@@ -10,7 +10,18 @@ part 'user.g.dart';
 class User with _$User {
   factory User({
     required String id,
-    required String text,
+    required String name,
+    DateTime? birthday,
+    String? gender,
+    String? role,
+    String? job,
+    String? passionForService,
+    String? comment,
+    String? teamId,
+    String? executiveId,
+    bool? inviteMember,
+    bool? checkNotification,
+    bool? transparency,
     @BoolIntConverter()
     @Default(false)
     @JsonKey(name: 'is_checked')

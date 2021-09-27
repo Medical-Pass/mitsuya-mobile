@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$UserRegistViewModelStateTearOff {
   const _$UserRegistViewModelStateTearOff();
 
-  _UserRegistViewModelState call({String sample = ''}) {
+  _UserRegistViewModelState call({String imagePath = ''}) {
     return _UserRegistViewModelState(
-      sample: sample,
+      imagePath: imagePath,
     );
   }
 }
@@ -28,7 +28,7 @@ const $UserRegistViewModelState = _$UserRegistViewModelStateTearOff();
 
 /// @nodoc
 mixin _$UserRegistViewModelState {
-  String get sample => throw _privateConstructorUsedError;
+  String get imagePath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserRegistViewModelStateCopyWith<UserRegistViewModelState> get copyWith =>
@@ -40,7 +40,7 @@ abstract class $UserRegistViewModelStateCopyWith<$Res> {
   factory $UserRegistViewModelStateCopyWith(UserRegistViewModelState value,
           $Res Function(UserRegistViewModelState) then) =
       _$UserRegistViewModelStateCopyWithImpl<$Res>;
-  $Res call({String sample});
+  $Res call({String imagePath});
 }
 
 /// @nodoc
@@ -54,12 +54,12 @@ class _$UserRegistViewModelStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? sample = freezed,
+    Object? imagePath = freezed,
   }) {
     return _then(_value.copyWith(
-      sample: sample == freezed
-          ? _value.sample
-          : sample // ignore: cast_nullable_to_non_nullable
+      imagePath: imagePath == freezed
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -72,7 +72,7 @@ abstract class _$UserRegistViewModelStateCopyWith<$Res>
           $Res Function(_UserRegistViewModelState) then) =
       __$UserRegistViewModelStateCopyWithImpl<$Res>;
   @override
-  $Res call({String sample});
+  $Res call({String imagePath});
 }
 
 /// @nodoc
@@ -89,12 +89,12 @@ class __$UserRegistViewModelStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? sample = freezed,
+    Object? imagePath = freezed,
   }) {
     return _then(_UserRegistViewModelState(
-      sample: sample == freezed
-          ? _value.sample
-          : sample // ignore: cast_nullable_to_non_nullable
+      imagePath: imagePath == freezed
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -102,28 +102,29 @@ class __$UserRegistViewModelStateCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_UserRegistViewModelState implements _UserRegistViewModelState {
-  _$_UserRegistViewModelState({this.sample = ''});
+  _$_UserRegistViewModelState({this.imagePath = ''});
 
   @JsonKey(defaultValue: '')
   @override
-  final String sample;
+  final String imagePath;
 
   @override
   String toString() {
-    return 'UserRegistViewModelState(sample: $sample)';
+    return 'UserRegistViewModelState(imagePath: $imagePath)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _UserRegistViewModelState &&
-            (identical(other.sample, sample) ||
-                const DeepCollectionEquality().equals(other.sample, sample)));
+            (identical(other.imagePath, imagePath) ||
+                const DeepCollectionEquality()
+                    .equals(other.imagePath, imagePath)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(sample);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(imagePath);
 
   @JsonKey(ignore: true)
   @override
@@ -133,11 +134,11 @@ class _$_UserRegistViewModelState implements _UserRegistViewModelState {
 }
 
 abstract class _UserRegistViewModelState implements UserRegistViewModelState {
-  factory _UserRegistViewModelState({String sample}) =
+  factory _UserRegistViewModelState({String imagePath}) =
       _$_UserRegistViewModelState;
 
   @override
-  String get sample => throw _privateConstructorUsedError;
+  String get imagePath => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserRegistViewModelStateCopyWith<_UserRegistViewModelState> get copyWith =>

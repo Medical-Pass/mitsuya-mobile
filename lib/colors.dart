@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xFFFFFFFF);
 const kPointColor = Color(0xFFEC6A2C);
+const kBlack0Color = Color(0xFF000000);
+
 const kBlack1Color = Color(0xFF333333);
 const kGray1Color = Color(0xFF595959);
 const kGray2Color = Color(0xFFB8B8B8);

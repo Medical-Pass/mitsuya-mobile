@@ -320,6 +320,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "firebase_storage",
+      "rootUri": "file:///Users/ookubotakumi/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "firebase_storage_platform_interface",
+      "rootUri": "file:///Users/ookubotakumi/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_platform_interface-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "firebase_storage_web",
+      "rootUri": "file:///Users/ookubotakumi/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fixnum",
       "rootUri": "file:///Users/ookubotakumi/development/flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-1.0.0",
       "packageUri": "lib/",
@@ -328,6 +346,12 @@
     {
       "name": "flutter",
       "rootUri": "file:///Users/ookubotakumi/development/flutter/packages/flutter",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_datetime_picker",
+      "rootUri": "file:///Users/ookubotakumi/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -514,6 +538,12 @@
     {
       "name": "image",
       "rootUri": "file:///Users/ookubotakumi/development/flutter/.pub-cache/hosted/pub.dartlang.org/image-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "image_cropper",
+      "rootUri": "file:///Users/ookubotakumi/development/flutter/.pub-cache/hosted/pub.dartlang.org/image_cropper-1.4.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1088,7 +1118,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-09-22T11:32:47.462296Z",
+  "generated": "2021-09-26T02:22:13.953805Z",
   "generator": "pub",
   "generatorVersion": "2.12.3"
 }

@@ -95,6 +95,7 @@ final kMonthList = [
   '12月'
 ];
 
+final kGenderList = ['男性', '女性', 'その他'];
 final kYearList = List.generate(
         100, (index) => (DateTime.now().year - index).toString() + '年')
     .reversed

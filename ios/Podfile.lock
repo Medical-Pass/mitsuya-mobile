@@ -361,6 +361,9 @@ PODS:
   - Firebase/Messaging (8.6.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 8.6.0)
+  - Firebase/Storage (8.6.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 8.6.0)
   - firebase_auth (3.1.1):
     - Firebase/Auth (= 8.6.0)
     - firebase_core
@@ -370,6 +373,10 @@ PODS:
     - Flutter
   - firebase_messaging (10.0.0):
     - Firebase/Messaging (= 8.6.0)
+    - firebase_core
+    - Flutter
+  - firebase_storage (10.0.3):
+    - Firebase/Storage (= 8.6.0)
     - firebase_core
     - Flutter
   - FirebaseAuth (8.6.0):
@@ -413,6 +420,9 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - nanopb (~> 2.30908.0)
+  - FirebaseStorage (8.6.0):
+    - FirebaseCore (~> 8.0)
+    - GTMSessionFetcher/Core (~> 1.5)
   - Flutter (1.0.0)
   - flutter_local_notifications (0.0.1):
     - Flutter
@@ -473,6 +483,9 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.7.0)
+  - image_cropper (0.0.4):
+    - Flutter
+    - TOCropViewController (~> 2.6.0)
   - image_picker (0.0.1):
     - Flutter
   - leveldb-library (1.22.1)
@@ -503,6 +516,7 @@ PODS:
     - Flutter
     - FMDB (>= 2.7.5)
   - tau_core (8.1.4)
+  - TOCropViewController (2.6.0)
   - url_launcher (0.0.1):
     - Flutter
   - video_player (0.0.1):
@@ -518,11 +532,13 @@ DEPENDENCIES:
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
+  - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_native_timezone (from `.symlinks/plugins/flutter_native_timezone/ios`)
   - flutter_sound (from `.symlinks/plugins/flutter_sound/ios`)
   - geocoding (from `.symlinks/plugins/geocoding/ios`)
+  - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
   - map_launcher (from `.symlinks/plugins/map_launcher/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
@@ -548,6 +564,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseInstallations
     - FirebaseMessaging
+    - FirebaseStorage
     - FMDB
     - GoogleDataTransport
     - GoogleUtilities
@@ -560,6 +577,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - tau_core
+    - TOCropViewController
 
 EXTERNAL SOURCES:
   app_review:
@@ -572,6 +590,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_messaging:
     :path: ".symlinks/plugins/firebase_messaging/ios"
+  firebase_storage:
+    :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
   flutter_local_notifications:
@@ -582,6 +602,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_sound/ios"
   geocoding:
     :path: ".symlinks/plugins/geocoding/ios"
+  image_cropper:
+    :path: ".symlinks/plugins/image_cropper/ios"
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
   map_launcher:
@@ -618,12 +640,14 @@ SPEC CHECKSUMS:
   firebase_auth: a5da789c2876fda3ad7407bd2828e502dfeebc42
   firebase_core: c21ac09a8d23afd3594b56ed786bad12e5266bba
   firebase_messaging: fe3c9b9d7864e2f767ce95b6f7fb72d19637dc07
+  firebase_storage: 75fc62b16cfbb268ea4e90729be5729e3dc38b1e
   FirebaseAuth: 223adeeb2262b417532e89bf06a960e3a0a1e9e4
   FirebaseCore: 620b677f70f5470a8e59cb77f3ddc666f6f09785
   FirebaseCoreDiagnostics: b63732f581a1c6a453ec7241f9ab60b3a5bd3450
   FirebaseFirestore: 7b8bd72aff4d3ad91498343e81fdbaa994ce8abe
   FirebaseInstallations: ede6fb72bb6337914e5888b399271259d0c4910c
   FirebaseMessaging: ce0a5ee974f7bfe83b6cc5acce88c2d969e37c41
+  FirebaseStorage: 2765944230981e63f8bd2938d9d5819158b7c34c
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   flutter_native_timezone: 5f05b2de06c9776b4cc70e1839f03de178394d22
@@ -635,6 +659,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  image_cropper: f1668dd8d2cad2d357955caad15a40547856edcb
   image_picker: 50e7c7ff960e5f58faa4d1f4af84a771c671bc4a
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   map_launcher: e325db1261d029ff33e08e03baccffe09593ffea
@@ -650,6 +675,7 @@ SPEC CHECKSUMS:
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   tau_core: 8e07b9ce46e5e1b1956fb4d5e9ac713206e5c315
+  TOCropViewController: 3105367e808b7d3d886a74ff59bf4804e7d3ab38
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
   wakelock: b0843b2479edbf6504d8d262c2959446f35373aa

@@ -120,6 +120,36 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/webview_flutter/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/webview_flutter/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/webview_flutter/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_auth/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_auth/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_auth/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/app_review/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/app_review/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/app_review/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/app_review/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/app_review/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/app_review/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_auth/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_auth/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_auth/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/cloud_firestore/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_storage/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_storage/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_storage/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_storage/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_storage/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_storage/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/image_cropper/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/image_cropper/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/image_cropper/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/image_cropper/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/image_cropper/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/image_cropper/example/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
