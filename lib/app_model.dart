@@ -116,11 +116,12 @@ class AppModel {
     final int? firstBuildDay = prefs.getInt(firstBuildDayKey);
     if (firstBuildDay == null) {
       // 初ビルドの場合、ビルド日をローカルに記録
-      prefs.setInt(firstBuildDayKey, DateTime.now().millisecondsSinceEpoch);
+      await prefs.setInt(
+          firstBuildDayKey, DateTime.now().millisecondsSinceEpoch);
     } else {
       // 初ビルドでない場合
       final firstBuildAt = DateTime.fromMillisecondsSinceEpoch(firstBuildDay);
-      final Duration difference = DateTime.now().difference(firstBuildAt);
+      final difference = DateTime.now().difference(firstBuildAt);
       int daysSinceFirstBuild = difference.inDays;
       final isReviewCompletedKey = 'isReviewCompletedKey';
       bool isReviewCompleted = prefs.getBool(isReviewCompletedKey) ?? false;
@@ -151,13 +152,13 @@ class AppModel {
   Future _subscribeMemberTopic() async {
     final prefs = await SharedPreferences.getInstance();
     final memberNotificationKey = 'member_notification';
-    final bool checkMemberNotification =
+    final checkMemberNotification =
         prefs.getBool(memberNotificationKey) ?? false;
 
     // まだ購読してなかった場合はここで強制的に購読させる
     if (!checkMemberNotification) {
       await FirebaseMessaging.instance.subscribeToTopic('member');
-      prefs.setBool(memberNotificationKey, true);
+      await prefs.setBool(memberNotificationKey, true);
     }
   }
 }

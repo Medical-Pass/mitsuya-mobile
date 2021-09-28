@@ -23,7 +23,7 @@ void showRequestPermissionDialog(BuildContext context, String text) async {
               style: TextStyle(color: kPointColor),
             ),
             onPressed: () async {
-              openAppSettings();
+              await openAppSettings();
             },
           ),
         ],

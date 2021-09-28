@@ -28,12 +28,13 @@ teams: # collection
   users:
     documentId: auto
     userId: userId = auth.uid
-  targetId: string
-
+  serviceShort: string
+  imageId: string
   genreId: string
-  structureId: string
-  purposeId: string
-  finalGroupId: string
+  serviceWorkId: string
+  coWorkGoalIds: array(string)
+  vision : string
+  background: string
 
 
 #target

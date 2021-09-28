@@ -31,7 +31,8 @@ class MypageIchiranPage extends HookWidget {
                     await Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute<void>(
-                            builder: (BuildContext context) => SignInPage()),
+                            builder: (BuildContext context) =>
+                                const SignInPage()),
                         (_) => true);
                   })
             ],

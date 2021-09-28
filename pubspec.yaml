@@ -60,6 +60,9 @@ dependencies:
   # Sound
   flutter_sound: ^8.1.4
 
+# multi select
+  multi_select_flutter: ^4.0.0
+
   #Video_player
   video_player: ^2.1.0
 

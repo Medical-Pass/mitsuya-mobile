@@ -115,11 +115,6 @@ class UserRegistViewModel extends StateNotifier<UserRegistViewModelState>
         ));
     if (croppedFile != null) {
       state = state.copyWith(imagePath: croppedFile.path);
-
-      // imageFile = croppedFile;
-      // setState(() {
-      //   state = AppState.cropped;
-      // });
     }
   }
 
@@ -138,41 +133,4 @@ class UserRegistViewModel extends StateNotifier<UserRegistViewModelState>
     }
   }
 
-  // Future<void> onUpdate(String id) async {
-  //   if (!fieldKey.currentState!.validate() ||
-  //      ) {
-  //     return;
-  //   }
-  //
-  //   await UserNotifier.onUpdate(
-  //       id,
-  //       const DateTimeStringConverter()
-  //           .getDateTime(dateKey.currentState!.value!),
-  //       int.parse(pointKey.currentState!.value!),
-  //       const IntStringConverter()
-  //           .getIntPoint(fieldKey.currentState!.value!.substring(0, 2)),
-  //       activeNameKey.currentState!.value!,
-  //       state.imagePath != '' ? File(state.imagePath) : null);
-  // }
-  //
-  //
-  // Future<User?> getFromId(String id) async {
-  //   return UserNotifier.getFromId(id);
-  // }
-  //
-  // Future<void> setOldData(String id) async {
-  //   final result = await getFromId(id);
-  //
-  //   if (result == null) {
-  //     return null;
-  //   }
-  //
-  //   String imagePath = '';
-  //
-  //   if (result.field != null) {
-  //     fieldKey.currentState?.didChange(kPointTextList[result.field - 1]);
-  //   }
-  //
-  //   state = state.copyWith(imagePath: imagePath);
-  // }
 }

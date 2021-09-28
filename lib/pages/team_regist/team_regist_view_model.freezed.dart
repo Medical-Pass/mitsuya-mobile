@@ -16,9 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TeamRegistViewModelStateTearOff {
   const _$TeamRegistViewModelStateTearOff();
 
-  _TeamRegistViewModelState call({String sample = ''}) {
+  _TeamRegistViewModelState call(
+      {String imagePath = '',
+      List<String> coWorkList = const <String>[],
+      String selectedGenreId = '',
+      String selectedServiceId = ''}) {
     return _TeamRegistViewModelState(
-      sample: sample,
+      imagePath: imagePath,
+      coWorkList: coWorkList,
+      selectedGenreId: selectedGenreId,
+      selectedServiceId: selectedServiceId,
     );
   }
 }
@@ -28,7 +35,10 @@ const $TeamRegistViewModelState = _$TeamRegistViewModelStateTearOff();
 
 /// @nodoc
 mixin _$TeamRegistViewModelState {
-  String get sample => throw _privateConstructorUsedError;
+  String get imagePath => throw _privateConstructorUsedError;
+  List<String> get coWorkList => throw _privateConstructorUsedError;
+  String get selectedGenreId => throw _privateConstructorUsedError;
+  String get selectedServiceId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TeamRegistViewModelStateCopyWith<TeamRegistViewModelState> get copyWith =>
@@ -40,7 +50,11 @@ abstract class $TeamRegistViewModelStateCopyWith<$Res> {
   factory $TeamRegistViewModelStateCopyWith(TeamRegistViewModelState value,
           $Res Function(TeamRegistViewModelState) then) =
       _$TeamRegistViewModelStateCopyWithImpl<$Res>;
-  $Res call({String sample});
+  $Res call(
+      {String imagePath,
+      List<String> coWorkList,
+      String selectedGenreId,
+      String selectedServiceId});
 }
 
 /// @nodoc
@@ -54,12 +68,27 @@ class _$TeamRegistViewModelStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? sample = freezed,
+    Object? imagePath = freezed,
+    Object? coWorkList = freezed,
+    Object? selectedGenreId = freezed,
+    Object? selectedServiceId = freezed,
   }) {
     return _then(_value.copyWith(
-      sample: sample == freezed
-          ? _value.sample
-          : sample // ignore: cast_nullable_to_non_nullable
+      imagePath: imagePath == freezed
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      coWorkList: coWorkList == freezed
+          ? _value.coWorkList
+          : coWorkList // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      selectedGenreId: selectedGenreId == freezed
+          ? _value.selectedGenreId
+          : selectedGenreId // ignore: cast_nullable_to_non_nullable
+              as String,
+      selectedServiceId: selectedServiceId == freezed
+          ? _value.selectedServiceId
+          : selectedServiceId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -72,7 +101,11 @@ abstract class _$TeamRegistViewModelStateCopyWith<$Res>
           $Res Function(_TeamRegistViewModelState) then) =
       __$TeamRegistViewModelStateCopyWithImpl<$Res>;
   @override
-  $Res call({String sample});
+  $Res call(
+      {String imagePath,
+      List<String> coWorkList,
+      String selectedGenreId,
+      String selectedServiceId});
 }
 
 /// @nodoc
@@ -89,12 +122,27 @@ class __$TeamRegistViewModelStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? sample = freezed,
+    Object? imagePath = freezed,
+    Object? coWorkList = freezed,
+    Object? selectedGenreId = freezed,
+    Object? selectedServiceId = freezed,
   }) {
     return _then(_TeamRegistViewModelState(
-      sample: sample == freezed
-          ? _value.sample
-          : sample // ignore: cast_nullable_to_non_nullable
+      imagePath: imagePath == freezed
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      coWorkList: coWorkList == freezed
+          ? _value.coWorkList
+          : coWorkList // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      selectedGenreId: selectedGenreId == freezed
+          ? _value.selectedGenreId
+          : selectedGenreId // ignore: cast_nullable_to_non_nullable
+              as String,
+      selectedServiceId: selectedServiceId == freezed
+          ? _value.selectedServiceId
+          : selectedServiceId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -102,28 +150,55 @@ class __$TeamRegistViewModelStateCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_TeamRegistViewModelState implements _TeamRegistViewModelState {
-  _$_TeamRegistViewModelState({this.sample = ''});
+  _$_TeamRegistViewModelState(
+      {this.imagePath = '',
+      this.coWorkList = const <String>[],
+      this.selectedGenreId = '',
+      this.selectedServiceId = ''});
 
   @JsonKey(defaultValue: '')
   @override
-  final String sample;
+  final String imagePath;
+  @JsonKey(defaultValue: const <String>[])
+  @override
+  final List<String> coWorkList;
+  @JsonKey(defaultValue: '')
+  @override
+  final String selectedGenreId;
+  @JsonKey(defaultValue: '')
+  @override
+  final String selectedServiceId;
 
   @override
   String toString() {
-    return 'TeamRegistViewModelState(sample: $sample)';
+    return 'TeamRegistViewModelState(imagePath: $imagePath, coWorkList: $coWorkList, selectedGenreId: $selectedGenreId, selectedServiceId: $selectedServiceId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TeamRegistViewModelState &&
-            (identical(other.sample, sample) ||
-                const DeepCollectionEquality().equals(other.sample, sample)));
+            (identical(other.imagePath, imagePath) ||
+                const DeepCollectionEquality()
+                    .equals(other.imagePath, imagePath)) &&
+            (identical(other.coWorkList, coWorkList) ||
+                const DeepCollectionEquality()
+                    .equals(other.coWorkList, coWorkList)) &&
+            (identical(other.selectedGenreId, selectedGenreId) ||
+                const DeepCollectionEquality()
+                    .equals(other.selectedGenreId, selectedGenreId)) &&
+            (identical(other.selectedServiceId, selectedServiceId) ||
+                const DeepCollectionEquality()
+                    .equals(other.selectedServiceId, selectedServiceId)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(sample);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(imagePath) ^
+      const DeepCollectionEquality().hash(coWorkList) ^
+      const DeepCollectionEquality().hash(selectedGenreId) ^
+      const DeepCollectionEquality().hash(selectedServiceId);
 
   @JsonKey(ignore: true)
   @override
@@ -133,11 +208,20 @@ class _$_TeamRegistViewModelState implements _TeamRegistViewModelState {
 }
 
 abstract class _TeamRegistViewModelState implements TeamRegistViewModelState {
-  factory _TeamRegistViewModelState({String sample}) =
-      _$_TeamRegistViewModelState;
+  factory _TeamRegistViewModelState(
+      {String imagePath,
+      List<String> coWorkList,
+      String selectedGenreId,
+      String selectedServiceId}) = _$_TeamRegistViewModelState;
 
   @override
-  String get sample => throw _privateConstructorUsedError;
+  String get imagePath => throw _privateConstructorUsedError;
+  @override
+  List<String> get coWorkList => throw _privateConstructorUsedError;
+  @override
+  String get selectedGenreId => throw _privateConstructorUsedError;
+  @override
+  String get selectedServiceId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$TeamRegistViewModelStateCopyWith<_TeamRegistViewModelState> get copyWith =>

@@ -1,6 +1,9 @@
-import 'package:base_app/logger.dart';
+import 'dart:io';
+
+import 'package:base_app/pages/main/main_page.dart';
 import 'package:base_app/pages/team_regist/team_regist_view_model.dart';
 import 'package:base_app/widgets/profile_avatar.dart';
+import 'package:base_app/widgets/show_bottom_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -17,6 +20,17 @@ class TeamRegistPage extends HookWidget {
     final provider = teamRegistViewModelProvider;
     final viewModel = useProvider(provider);
 
+    final imagePath = useProvider(
+            provider.state.select((TeamRegistViewModelState state) => state))
+        .imagePath;
+
+    final selectedGenreId = useProvider(
+            provider.state.select((TeamRegistViewModelState state) => state))
+        .selectedGenreId;
+    final selectedServiceId = useProvider(
+            provider.state.select((TeamRegistViewModelState state) => state))
+        .selectedServiceId;
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -32,6 +46,7 @@ class TeamRegistPage extends HookWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(height: 50),
                         const Text('1.サービスを一言で'),
                         const SizedBox(height: 10),
                         TextFormField(
@@ -44,8 +59,8 @@ class TeamRegistPage extends HookWidget {
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                             )),
-                        const SizedBox(height: 50),
-                        const Text('1. プロフィール画像'),
+                        const SizedBox(height: 30),
+                        Center(child: const Text('2. 写真')),
                         const SizedBox(height: 10),
                         ProfileAvatar(
                             onTap: () async {
@@ -79,18 +94,36 @@ class TeamRegistPage extends HookWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text('2.名前'),
+                                  const Text('3.サービスのジャンル'),
                                   const SizedBox(height: 10),
                                   TextFormField(
-                                      key: viewModel.nameKey,
+                                      key: viewModel.serviceGenreKey,
+                                      readOnly: true,
+                                      controller: viewModel.genreController,
+                                      onTap: () async {
+                                        final genres =
+                                            await viewModel.getGenres();
+
+                                        await showBottomPicker(
+                                            context,
+                                            genres.map((e) => e.name).toList(),
+                                            viewModel.genreController,
+                                            'サービスのジャンル');
+
+                                        viewModel.setGenreId(
+                                            viewModel.genreController.text,
+                                            genres);
+                                      },
                                       autovalidateMode:
                                           AutovalidateMode.onUserInteraction,
                                       validator: (String? value) {
                                         return null;
                                       },
                                       decoration: const InputDecoration(
+                                          prefixIcon:
+                                              Icon(Icons.arrow_drop_down),
                                           border: OutlineInputBorder(),
-                                          hintText: '名前を入力してください')),
+                                          hintText: '趣味・娯楽')),
                                 ],
                               ),
                             ),
@@ -99,131 +132,63 @@ class TeamRegistPage extends HookWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text('3.役割'),
+                                  const Text('4.サービスの仕組み'),
                                   const SizedBox(height: 10),
                                   TextFormField(
-                                      key: viewModel.roleKey,
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      validator: (String? value) {
-                                        return null;
-                                      },
-                                      decoration: const InputDecoration(
-                                          border: OutlineInputBorder(),
-                                          hintText: '役割を入力してください')),
+                                    readOnly: true,
+                                    key: viewModel.serviceWorkKey,
+                                    controller: viewModel.serviceWorkController,
+                                    onTap: () async {
+                                      final serviceWork =
+                                          await viewModel.getServiceWork();
+
+                                      await showBottomPicker(
+                                          context,
+                                          serviceWork
+                                              .map((e) => e.name)
+                                              .toList(),
+                                          viewModel.serviceWorkController,
+                                          'サービスの仕組み');
+
+                                      viewModel.setServiceId(
+                                          viewModel.serviceWorkController.text,
+                                          serviceWork);
+                                    },
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    validator: (String? value) {
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                      prefixIcon: Icon(Icons.arrow_drop_down),
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 50),
-                        const Text('チーム名'),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                            key: viewModel.teamKey,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: (String? value) {
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'チーム名を入力してください')),
-                        const SizedBox(height: 50),
-                        const Text('拠点'),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                            key: viewModel.placeKey,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: (String? value) {
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: '拠点を入力してください')),
-                        const SizedBox(height: 50),
-                        const Text('チーム人数'),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                            keyboardType: TextInputType.number,
-                            key: viewModel.teamNumKey,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: (String? value) {
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'チーム人数を入力してください')),
-                        const SizedBox(height: 50),
-                        const Text('サービス名'),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                            key: viewModel.serviceKey,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: (String? value) {
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'サービス名を入力してください')),
-                        const SizedBox(height: 50),
-                        const Text('サービスのジャンル*'),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                            onTap: () async {
-                              final genres = await viewModel.getGenres();
-                              logger.info(genres[0].id);
-                            },
-                            readOnly: true,
-                            key: viewModel.serviceGenreKey,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return '必須入力です';
-                              }
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'サービスのジャンルを入力してください')),
-                        const SizedBox(height: 50),
-                        const Text('サービスの仕組み*'),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                            key: viewModel.serviceJobKey,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return '必須入力です';
-                              }
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'サービスの仕組みを入力してください')),
-                        const SizedBox(height: 50),
-                        const Text('協働の目的*'),
+                        const Text('5.協働の目的'),
                         const SizedBox(height: 10),
                         TextFormField(
                             key: viewModel.coWorkGoalKey,
+                            readOnly: true,
+                            onTap: () {
+                              viewModel.showMultiSelect(context);
+                            },
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return '必須入力です';
-                              }
                               return null;
                             },
                             decoration: const InputDecoration(
+                                prefixIcon: Icon(Icons.arrow_drop_down),
                                 border: OutlineInputBorder(),
-                                hintText: '協働の目的を入力してください')),
+                                hintText: '認知の拡大 | 実績を増やす | 施策・')),
                         const SizedBox(height: 50),
-                        const Text('サービスの内容'),
+                        const Text('6.サービスの内容'),
                         const SizedBox(height: 10),
                         TextFormField(
                             minLines: 3,
@@ -239,22 +204,7 @@ class TeamRegistPage extends HookWidget {
                                 hintText:
                                     '起業準備をしている方のための、サービスの認知と実績の拡大を加速させる、協働型のオンラインプラットフォーム')),
                         const SizedBox(height: 50),
-                        const Text('サービスの進度'),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                            minLines: 3,
-                            maxLines: 5,
-                            key: viewModel.serviceProcessKey,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: (String? value) {
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'ベータ版検証中')),
-                        const SizedBox(height: 50),
-                        const Text('ビジョン'),
+                        const Text('7.サービスのビジョン'),
                         const SizedBox(height: 10),
                         TextFormField(
                             minLines: 3,
@@ -267,9 +217,11 @@ class TeamRegistPage extends HookWidget {
                             },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
-                                hintText: '起業という選択肢をよりライトに')),
+                                hintText:
+                                    '準備段階からのオープンイノベーションのような掛け合わせで、認知の拡大や実績の獲得、'
+                                    '新しい価値の創出を目指す。')),
                         const SizedBox(height: 50),
-                        const Text('背景'),
+                        const Text('8.サービスの背景'),
                         const SizedBox(height: 10),
                         TextFormField(
                             minLines: 3,
@@ -284,17 +236,20 @@ class TeamRegistPage extends HookWidget {
                                 border: OutlineInputBorder(),
                                 hintText:
                                     '起業の世界では、「個」で戦っている方が多いという現状を目の当たりにした時に、協力して「集」で'
-                                    '戦うことを当たり前にできれば、もっと上手くいく')),
+                                    '戦うことを当たり前にできれば、もっと上手くいく。')),
                         const SizedBox(height: 100),
                         ElevatedButton(
                           onPressed: () async {
-                            if (viewModel.serviceGenreKey.currentState!
-                                    .validate() &&
-                                viewModel.serviceJobKey.currentState!
-                                    .validate() &&
-                                viewModel.coWorkGoalKey.currentState!
-                                    .validate()) {
+                            if (viewModel.checkKeyValidate()) {
                               await viewModel.addTeam();
+
+                              await Navigator.push(
+                                  context,
+                                  MaterialPageRoute<void>(
+                                    builder: (BuildContext context) =>
+                                        const MainPage(),
+                                    fullscreenDialog: false,
+                                  ));
                             }
                           },
                           style: ElevatedButton.styleFrom(

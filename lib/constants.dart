@@ -96,10 +96,10 @@ final kMonthList = [
 ];
 
 final kGenderList = ['男性', '女性', 'その他'];
-final kYearList = List.generate(
-        100, (index) => (DateTime.now().year - index).toString() + '年')
-    .reversed
-    .toList();
+final kYearList =
+    List.generate(100, (index) => '${DateTime.now().year - index}年')
+        .reversed
+        .toList();
 
 int getAge(DateTime birthday) {
   final formatter = DateFormat('yyyyMMdd', "ja_JP");

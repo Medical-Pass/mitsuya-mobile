@@ -96,15 +96,16 @@ class UserRegistPage extends HookWidget {
                                   const Text('3.役割'),
                                   const SizedBox(height: 10),
                                   TextFormField(
-                                      key: viewModel.roleKey,
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      validator: (String? value) {
-                                        return null;
-                                      },
-                                      decoration: const InputDecoration(
-                                          border: OutlineInputBorder(),
-                                          hintText: '役割を入力してください')),
+                                    key: viewModel.roleKey,
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    validator: (String? value) {
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),

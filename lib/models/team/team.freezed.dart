@@ -23,20 +23,13 @@ class _$TeamTearOff {
   _Team call(
       {required String id,
       required String name,
-      DateTime? birthday,
-      String? gender,
-      String? role,
-      String? job,
-      String? passionForService,
-      String? comment,
-      String? teamId,
-      String? executiveId,
-      bool? inviteMember,
-      bool? checkNotification,
-      bool? transparency,
-      @BoolIntConverter()
-      @JsonKey(name: 'is_checked')
-          bool isChecked = false,
+      String? serviceShort,
+      String? imageId,
+      String? genreId,
+      String? serviceWorkId,
+      List<String>? coWorkGoalIds,
+      String? vision,
+      String? background,
       @DateTimeStringConverter()
       @JsonKey(name: 'created_at')
           DateTime? createdAt,
@@ -46,18 +39,13 @@ class _$TeamTearOff {
     return _Team(
       id: id,
       name: name,
-      birthday: birthday,
-      gender: gender,
-      role: role,
-      job: job,
-      passionForService: passionForService,
-      comment: comment,
-      teamId: teamId,
-      executiveId: executiveId,
-      inviteMember: inviteMember,
-      checkNotification: checkNotification,
-      transparency: transparency,
-      isChecked: isChecked,
+      serviceShort: serviceShort,
+      imageId: imageId,
+      genreId: genreId,
+      serviceWorkId: serviceWorkId,
+      coWorkGoalIds: coWorkGoalIds,
+      vision: vision,
+      background: background,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -75,20 +63,13 @@ const $Team = _$TeamTearOff();
 mixin _$Team {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  DateTime? get birthday => throw _privateConstructorUsedError;
-  String? get gender => throw _privateConstructorUsedError;
-  String? get role => throw _privateConstructorUsedError;
-  String? get job => throw _privateConstructorUsedError;
-  String? get passionForService => throw _privateConstructorUsedError;
-  String? get comment => throw _privateConstructorUsedError;
-  String? get teamId => throw _privateConstructorUsedError;
-  String? get executiveId => throw _privateConstructorUsedError;
-  bool? get inviteMember => throw _privateConstructorUsedError;
-  bool? get checkNotification => throw _privateConstructorUsedError;
-  bool? get transparency => throw _privateConstructorUsedError;
-  @BoolIntConverter()
-  @JsonKey(name: 'is_checked')
-  bool get isChecked => throw _privateConstructorUsedError;
+  String? get serviceShort => throw _privateConstructorUsedError;
+  String? get imageId => throw _privateConstructorUsedError;
+  String? get genreId => throw _privateConstructorUsedError;
+  String? get serviceWorkId => throw _privateConstructorUsedError;
+  List<String>? get coWorkGoalIds => throw _privateConstructorUsedError;
+  String? get vision => throw _privateConstructorUsedError;
+  String? get background => throw _privateConstructorUsedError;
   @DateTimeStringConverter()
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -108,20 +89,13 @@ abstract class $TeamCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      DateTime? birthday,
-      String? gender,
-      String? role,
-      String? job,
-      String? passionForService,
-      String? comment,
-      String? teamId,
-      String? executiveId,
-      bool? inviteMember,
-      bool? checkNotification,
-      bool? transparency,
-      @BoolIntConverter()
-      @JsonKey(name: 'is_checked')
-          bool isChecked,
+      String? serviceShort,
+      String? imageId,
+      String? genreId,
+      String? serviceWorkId,
+      List<String>? coWorkGoalIds,
+      String? vision,
+      String? background,
       @DateTimeStringConverter()
       @JsonKey(name: 'created_at')
           DateTime? createdAt,
@@ -142,18 +116,13 @@ class _$TeamCopyWithImpl<$Res> implements $TeamCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? birthday = freezed,
-    Object? gender = freezed,
-    Object? role = freezed,
-    Object? job = freezed,
-    Object? passionForService = freezed,
-    Object? comment = freezed,
-    Object? teamId = freezed,
-    Object? executiveId = freezed,
-    Object? inviteMember = freezed,
-    Object? checkNotification = freezed,
-    Object? transparency = freezed,
-    Object? isChecked = freezed,
+    Object? serviceShort = freezed,
+    Object? imageId = freezed,
+    Object? genreId = freezed,
+    Object? serviceWorkId = freezed,
+    Object? coWorkGoalIds = freezed,
+    Object? vision = freezed,
+    Object? background = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -166,54 +135,34 @@ class _$TeamCopyWithImpl<$Res> implements $TeamCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      birthday: birthday == freezed
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      gender: gender == freezed
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
+      serviceShort: serviceShort == freezed
+          ? _value.serviceShort
+          : serviceShort // ignore: cast_nullable_to_non_nullable
               as String?,
-      role: role == freezed
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
+      imageId: imageId == freezed
+          ? _value.imageId
+          : imageId // ignore: cast_nullable_to_non_nullable
               as String?,
-      job: job == freezed
-          ? _value.job
-          : job // ignore: cast_nullable_to_non_nullable
+      genreId: genreId == freezed
+          ? _value.genreId
+          : genreId // ignore: cast_nullable_to_non_nullable
               as String?,
-      passionForService: passionForService == freezed
-          ? _value.passionForService
-          : passionForService // ignore: cast_nullable_to_non_nullable
+      serviceWorkId: serviceWorkId == freezed
+          ? _value.serviceWorkId
+          : serviceWorkId // ignore: cast_nullable_to_non_nullable
               as String?,
-      comment: comment == freezed
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
+      coWorkGoalIds: coWorkGoalIds == freezed
+          ? _value.coWorkGoalIds
+          : coWorkGoalIds // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      vision: vision == freezed
+          ? _value.vision
+          : vision // ignore: cast_nullable_to_non_nullable
               as String?,
-      teamId: teamId == freezed
-          ? _value.teamId
-          : teamId // ignore: cast_nullable_to_non_nullable
+      background: background == freezed
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
               as String?,
-      executiveId: executiveId == freezed
-          ? _value.executiveId
-          : executiveId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      inviteMember: inviteMember == freezed
-          ? _value.inviteMember
-          : inviteMember // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      checkNotification: checkNotification == freezed
-          ? _value.checkNotification
-          : checkNotification // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      transparency: transparency == freezed
-          ? _value.transparency
-          : transparency // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isChecked: isChecked == freezed
-          ? _value.isChecked
-          : isChecked // ignore: cast_nullable_to_non_nullable
-              as bool,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -234,20 +183,13 @@ abstract class _$TeamCopyWith<$Res> implements $TeamCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      DateTime? birthday,
-      String? gender,
-      String? role,
-      String? job,
-      String? passionForService,
-      String? comment,
-      String? teamId,
-      String? executiveId,
-      bool? inviteMember,
-      bool? checkNotification,
-      bool? transparency,
-      @BoolIntConverter()
-      @JsonKey(name: 'is_checked')
-          bool isChecked,
+      String? serviceShort,
+      String? imageId,
+      String? genreId,
+      String? serviceWorkId,
+      List<String>? coWorkGoalIds,
+      String? vision,
+      String? background,
       @DateTimeStringConverter()
       @JsonKey(name: 'created_at')
           DateTime? createdAt,
@@ -269,18 +211,13 @@ class __$TeamCopyWithImpl<$Res> extends _$TeamCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? birthday = freezed,
-    Object? gender = freezed,
-    Object? role = freezed,
-    Object? job = freezed,
-    Object? passionForService = freezed,
-    Object? comment = freezed,
-    Object? teamId = freezed,
-    Object? executiveId = freezed,
-    Object? inviteMember = freezed,
-    Object? checkNotification = freezed,
-    Object? transparency = freezed,
-    Object? isChecked = freezed,
+    Object? serviceShort = freezed,
+    Object? imageId = freezed,
+    Object? genreId = freezed,
+    Object? serviceWorkId = freezed,
+    Object? coWorkGoalIds = freezed,
+    Object? vision = freezed,
+    Object? background = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -293,54 +230,34 @@ class __$TeamCopyWithImpl<$Res> extends _$TeamCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      birthday: birthday == freezed
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      gender: gender == freezed
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
+      serviceShort: serviceShort == freezed
+          ? _value.serviceShort
+          : serviceShort // ignore: cast_nullable_to_non_nullable
               as String?,
-      role: role == freezed
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
+      imageId: imageId == freezed
+          ? _value.imageId
+          : imageId // ignore: cast_nullable_to_non_nullable
               as String?,
-      job: job == freezed
-          ? _value.job
-          : job // ignore: cast_nullable_to_non_nullable
+      genreId: genreId == freezed
+          ? _value.genreId
+          : genreId // ignore: cast_nullable_to_non_nullable
               as String?,
-      passionForService: passionForService == freezed
-          ? _value.passionForService
-          : passionForService // ignore: cast_nullable_to_non_nullable
+      serviceWorkId: serviceWorkId == freezed
+          ? _value.serviceWorkId
+          : serviceWorkId // ignore: cast_nullable_to_non_nullable
               as String?,
-      comment: comment == freezed
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
+      coWorkGoalIds: coWorkGoalIds == freezed
+          ? _value.coWorkGoalIds
+          : coWorkGoalIds // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      vision: vision == freezed
+          ? _value.vision
+          : vision // ignore: cast_nullable_to_non_nullable
               as String?,
-      teamId: teamId == freezed
-          ? _value.teamId
-          : teamId // ignore: cast_nullable_to_non_nullable
+      background: background == freezed
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
               as String?,
-      executiveId: executiveId == freezed
-          ? _value.executiveId
-          : executiveId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      inviteMember: inviteMember == freezed
-          ? _value.inviteMember
-          : inviteMember // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      checkNotification: checkNotification == freezed
-          ? _value.checkNotification
-          : checkNotification // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      transparency: transparency == freezed
-          ? _value.transparency
-          : transparency // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isChecked: isChecked == freezed
-          ? _value.isChecked
-          : isChecked // ignore: cast_nullable_to_non_nullable
-              as bool,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -360,18 +277,13 @@ class _$_Team extends _Team {
   _$_Team(
       {required this.id,
       required this.name,
-      this.birthday,
-      this.gender,
-      this.role,
-      this.job,
-      this.passionForService,
-      this.comment,
-      this.teamId,
-      this.executiveId,
-      this.inviteMember,
-      this.checkNotification,
-      this.transparency,
-      @BoolIntConverter() @JsonKey(name: 'is_checked') this.isChecked = false,
+      this.serviceShort,
+      this.imageId,
+      this.genreId,
+      this.serviceWorkId,
+      this.coWorkGoalIds,
+      this.vision,
+      this.background,
       @DateTimeStringConverter() @JsonKey(name: 'created_at') this.createdAt,
       @DateTimeStringConverter() @JsonKey(name: 'updated_at') this.updatedAt})
       : super._();
@@ -384,31 +296,19 @@ class _$_Team extends _Team {
   @override
   final String name;
   @override
-  final DateTime? birthday;
+  final String? serviceShort;
   @override
-  final String? gender;
+  final String? imageId;
   @override
-  final String? role;
+  final String? genreId;
   @override
-  final String? job;
+  final String? serviceWorkId;
   @override
-  final String? passionForService;
+  final List<String>? coWorkGoalIds;
   @override
-  final String? comment;
+  final String? vision;
   @override
-  final String? teamId;
-  @override
-  final String? executiveId;
-  @override
-  final bool? inviteMember;
-  @override
-  final bool? checkNotification;
-  @override
-  final bool? transparency;
-  @override
-  @BoolIntConverter()
-  @JsonKey(name: 'is_checked')
-  final bool isChecked;
+  final String? background;
   @override
   @DateTimeStringConverter()
   @JsonKey(name: 'created_at')
@@ -420,7 +320,7 @@ class _$_Team extends _Team {
 
   @override
   String toString() {
-    return 'Team(id: $id, name: $name, birthday: $birthday, gender: $gender, role: $role, job: $job, passionForService: $passionForService, comment: $comment, teamId: $teamId, executiveId: $executiveId, inviteMember: $inviteMember, checkNotification: $checkNotification, transparency: $transparency, isChecked: $isChecked, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Team(id: $id, name: $name, serviceShort: $serviceShort, imageId: $imageId, genreId: $genreId, serviceWorkId: $serviceWorkId, coWorkGoalIds: $coWorkGoalIds, vision: $vision, background: $background, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -431,38 +331,26 @@ class _$_Team extends _Team {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.birthday, birthday) ||
+            (identical(other.serviceShort, serviceShort) ||
                 const DeepCollectionEquality()
-                    .equals(other.birthday, birthday)) &&
-            (identical(other.gender, gender) ||
-                const DeepCollectionEquality().equals(other.gender, gender)) &&
-            (identical(other.role, role) ||
-                const DeepCollectionEquality().equals(other.role, role)) &&
-            (identical(other.job, job) ||
-                const DeepCollectionEquality().equals(other.job, job)) &&
-            (identical(other.passionForService, passionForService) ||
+                    .equals(other.serviceShort, serviceShort)) &&
+            (identical(other.imageId, imageId) ||
                 const DeepCollectionEquality()
-                    .equals(other.passionForService, passionForService)) &&
-            (identical(other.comment, comment) ||
+                    .equals(other.imageId, imageId)) &&
+            (identical(other.genreId, genreId) ||
                 const DeepCollectionEquality()
-                    .equals(other.comment, comment)) &&
-            (identical(other.teamId, teamId) ||
-                const DeepCollectionEquality().equals(other.teamId, teamId)) &&
-            (identical(other.executiveId, executiveId) ||
+                    .equals(other.genreId, genreId)) &&
+            (identical(other.serviceWorkId, serviceWorkId) ||
                 const DeepCollectionEquality()
-                    .equals(other.executiveId, executiveId)) &&
-            (identical(other.inviteMember, inviteMember) ||
+                    .equals(other.serviceWorkId, serviceWorkId)) &&
+            (identical(other.coWorkGoalIds, coWorkGoalIds) ||
                 const DeepCollectionEquality()
-                    .equals(other.inviteMember, inviteMember)) &&
-            (identical(other.checkNotification, checkNotification) ||
+                    .equals(other.coWorkGoalIds, coWorkGoalIds)) &&
+            (identical(other.vision, vision) ||
+                const DeepCollectionEquality().equals(other.vision, vision)) &&
+            (identical(other.background, background) ||
                 const DeepCollectionEquality()
-                    .equals(other.checkNotification, checkNotification)) &&
-            (identical(other.transparency, transparency) ||
-                const DeepCollectionEquality()
-                    .equals(other.transparency, transparency)) &&
-            (identical(other.isChecked, isChecked) ||
-                const DeepCollectionEquality()
-                    .equals(other.isChecked, isChecked)) &&
+                    .equals(other.background, background)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)) &&
@@ -476,18 +364,13 @@ class _$_Team extends _Team {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(birthday) ^
-      const DeepCollectionEquality().hash(gender) ^
-      const DeepCollectionEquality().hash(role) ^
-      const DeepCollectionEquality().hash(job) ^
-      const DeepCollectionEquality().hash(passionForService) ^
-      const DeepCollectionEquality().hash(comment) ^
-      const DeepCollectionEquality().hash(teamId) ^
-      const DeepCollectionEquality().hash(executiveId) ^
-      const DeepCollectionEquality().hash(inviteMember) ^
-      const DeepCollectionEquality().hash(checkNotification) ^
-      const DeepCollectionEquality().hash(transparency) ^
-      const DeepCollectionEquality().hash(isChecked) ^
+      const DeepCollectionEquality().hash(serviceShort) ^
+      const DeepCollectionEquality().hash(imageId) ^
+      const DeepCollectionEquality().hash(genreId) ^
+      const DeepCollectionEquality().hash(serviceWorkId) ^
+      const DeepCollectionEquality().hash(coWorkGoalIds) ^
+      const DeepCollectionEquality().hash(vision) ^
+      const DeepCollectionEquality().hash(background) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(updatedAt);
 
@@ -506,20 +389,13 @@ abstract class _Team extends Team {
   factory _Team(
       {required String id,
       required String name,
-      DateTime? birthday,
-      String? gender,
-      String? role,
-      String? job,
-      String? passionForService,
-      String? comment,
-      String? teamId,
-      String? executiveId,
-      bool? inviteMember,
-      bool? checkNotification,
-      bool? transparency,
-      @BoolIntConverter()
-      @JsonKey(name: 'is_checked')
-          bool isChecked,
+      String? serviceShort,
+      String? imageId,
+      String? genreId,
+      String? serviceWorkId,
+      List<String>? coWorkGoalIds,
+      String? vision,
+      String? background,
       @DateTimeStringConverter()
       @JsonKey(name: 'created_at')
           DateTime? createdAt,
@@ -535,31 +411,19 @@ abstract class _Team extends Team {
   @override
   String get name => throw _privateConstructorUsedError;
   @override
-  DateTime? get birthday => throw _privateConstructorUsedError;
+  String? get serviceShort => throw _privateConstructorUsedError;
   @override
-  String? get gender => throw _privateConstructorUsedError;
+  String? get imageId => throw _privateConstructorUsedError;
   @override
-  String? get role => throw _privateConstructorUsedError;
+  String? get genreId => throw _privateConstructorUsedError;
   @override
-  String? get job => throw _privateConstructorUsedError;
+  String? get serviceWorkId => throw _privateConstructorUsedError;
   @override
-  String? get passionForService => throw _privateConstructorUsedError;
+  List<String>? get coWorkGoalIds => throw _privateConstructorUsedError;
   @override
-  String? get comment => throw _privateConstructorUsedError;
+  String? get vision => throw _privateConstructorUsedError;
   @override
-  String? get teamId => throw _privateConstructorUsedError;
-  @override
-  String? get executiveId => throw _privateConstructorUsedError;
-  @override
-  bool? get inviteMember => throw _privateConstructorUsedError;
-  @override
-  bool? get checkNotification => throw _privateConstructorUsedError;
-  @override
-  bool? get transparency => throw _privateConstructorUsedError;
-  @override
-  @BoolIntConverter()
-  @JsonKey(name: 'is_checked')
-  bool get isChecked => throw _privateConstructorUsedError;
+  String? get background => throw _privateConstructorUsedError;
   @override
   @DateTimeStringConverter()
   @JsonKey(name: 'created_at')

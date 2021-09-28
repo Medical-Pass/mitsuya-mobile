@@ -1,18 +1,31 @@
 import 'dart:io';
 
+import 'package:base_app/colors.dart';
+import 'package:base_app/models/cowork/cowork.dart';
 import 'package:base_app/models/genre/genre.dart';
+import 'package:base_app/models/service_work/service_work.dart';
+import 'package:base_app/repositories/cloud_storage/cloud_storage_repository.dart';
+import 'package:base_app/widgets/show_request_permission_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:multi_select_flutter/dialog/mult_select_dialog.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
+import 'package:path/path.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 part 'team_regist_view_model.freezed.dart';
 
 @freezed
 class TeamRegistViewModelState with _$TeamRegistViewModelState {
-  factory TeamRegistViewModelState({@Default('') String imagePath}) =
+  factory TeamRegistViewModelState({@Default('') String imagePath,
+    @Default(<String>[]) List<String> coWorkList,
+    @Default('') String selectedGenreId,
+    @Default('') String selectedServiceId}) =
       _TeamRegistViewModelState;
 }
 
@@ -22,103 +35,140 @@ final teamRegistViewModelProvider =
 
 class TeamRegistViewModel extends StateNotifier<TeamRegistViewModelState>
     with LocatorMixin {
-  TeamRegistViewModel(
-    this._read,
-  ) : super(TeamRegistViewModelState()) {
+  TeamRegistViewModel(this._read,) : super(TeamRegistViewModelState()) {
     Future.delayed(Duration.zero, () async {});
   }
 
   final Reader _read;
+
   // TeamNotifier get TeamNotifier =>
   //     _read(teamRegistNotifierProvider);
 
   final serviceShortKey = GlobalKey<FormFieldState<String>>();
-  final teamKey = GlobalKey<FormFieldState<String>>();
-  final placeKey = GlobalKey<FormFieldState<String>>();
-  final teamNumKey = GlobalKey<FormFieldState<String>>();
-  final serviceKey = GlobalKey<FormFieldState<String>>();
   final serviceGenreKey = GlobalKey<FormFieldState<String>>();
-  final serviceJobKey = GlobalKey<FormFieldState<String>>();
+  final serviceWorkKey = GlobalKey<FormFieldState<String>>();
   final coWorkGoalKey = GlobalKey<FormFieldState<String>>();
   final serviceContentKey = GlobalKey<FormFieldState<String>>();
-  final serviceProcessKey = GlobalKey<FormFieldState<String>>();
   final visionKey = GlobalKey<FormFieldState<String>>();
   final backgroundKey = GlobalKey<FormFieldState<String>>();
 
-  bool _checkKeyValidate() {
-    return !teamKey.currentState!.validate() ||
-        !placeKey.currentState!.validate() ||
-        !teamNumKey.currentState!.validate() ||
-        !serviceKey.currentState!.validate() ||
-        !serviceJobKey.currentState!.validate() ||
-        !serviceProcessKey.currentState!.validate() ||
-        !coWorkGoalKey.currentState!.validate() ||
-        !serviceContentKey.currentState!.validate() ||
-        !serviceProcessKey.currentState!.validate() ||
-        !visionKey.currentState!.validate() ||
-        !backgroundKey.currentState!.validate();
+  final genreController = TextEditingController();
+  final serviceWorkController = TextEditingController();
+
+  bool checkKeyValidate() {
+    return
+        serviceShortKey.currentState!.validate() &&
+        serviceWorkKey.currentState!.validate() &&
+        serviceGenreKey.currentState!.validate() &&
+        coWorkGoalKey.currentState!.validate() &&
+        serviceContentKey.currentState!.validate() &&
+        visionKey.currentState!.validate() &&
+        backgroundKey.currentState!.validate();
   }
+
+   String _getIndex(String value, List<Genre> lists) {
+     final index = lists.map((e) => e.name).toList().indexOf(value);
+    return lists[index].id;
+  }
+
+  String _getIndex2(String value, List<ServiceWork> lists) {
+    final index = lists.map((e) => e.name).toList().indexOf(value);
+    return lists[index].id;
+  }
+
+  void setGenreId(String selectedGenre, List<Genre> genres) {
+    state = state.copyWith(selectedGenreId:_getIndex(selectedGenre,genres));
+  }
+
+  void setServiceId(String selectedService, List<ServiceWork> services) {
+    state = state.copyWith(selectedServiceId:_getIndex2(selectedService,services));
+  }
+
+
 
   CollectionReference _teams = FirebaseFirestore.instance.collection('teams');
 
 
-  Future<void> onTapGallery(BuildContext context) async {
+  Future<void> showMultiSelect(BuildContext context) async {
+
+    final coWorkGoals = await getCoWorkGoals();
+
+    final coWorkGoalsName = coWorkGoals.map((e) => e.name).toList();
+    final coWorkGoalsId = coWorkGoals.map((e) => e.id).toList();
+
+    await showDialog<void>(
+      context: context,
+      builder: (ctx) {
+        return MultiSelectDialog<void>(
+          searchable:false,
+            selectedColor:kPointColor,
+          items: _getCoworkItems(coWorkGoals),
+          initialValue: null,
+          onConfirm: (List<void> values) {
+            coWorkGoalKey.currentState?.didChange(values.join(' | '));
+
+            final tmp = values.map( (e) => coWorkGoalsId[coWorkGoalsName.indexOf(e as String)]).toList();
+            print(tmp);
+
+            state = state.copyWith(coWorkList:tmp);
+
+          },
+        );
+      },
+    );
+  }
+
+    Future<void> _cropImage(String imageFilePath) async {
+      File? croppedFile = await ImageCropper.cropImage(
+          sourcePath: imageFilePath,
+          cropStyle: CropStyle.circle
+          aspectRatioPresets: Platform.isAndroid
+          ? [
+          CropAspectRatioPreset.square,
+          ]
+              : [
+          CropAspectRatioPreset.square,
+          ],
+          androidUiSettings: AndroidUiSettings(
+      toolbarTitle: 'Cropper',
+      toolbarColor: Colors.deepOrange,
+      toolbarWidgetColor: Colors.white,
+          initAspectRatio: CropAspectRatioPreset.original,
+          lockAspectRatio: false),
+          iosUiSettings: IOSUiSettings(
+      title: 'Cropper',
+      ));
+      if (croppedFile != null) {
+      state = state.copyWith(imagePath: croppedFile.path);
+      }
+    }
+
+  Future<List<ServiceWork>> getServiceWork() async {
     try {
-      final file = await ImagePicker().getImage(source: ImageSource.gallery);
-      if (file == null) {
-        return;
-      }
-      _cropImage(file.path);
-    } on PlatformException {
-      if (await Permission.photos.isPermanentlyDenied) {
-        showRequestPermissionDialog(context, '写真のアクセスを許可する必要があります。');
-      }
-      return;
+      final snapshot = await FirebaseFirestore.instance
+          .collection('serviceWork')
+          .get();
+
+      return snapshot.docs.map((e) => ServiceWork.doc(e)).toList();
+    } catch (e) {
+      print('error:${e.toString()}');
+      rethrow;
     }
   }
 
-  Future<void> _cropImage(String imageFilePath) async {
-    File? croppedFile = await ImageCropper.cropImage(
-        sourcePath: imageFilePath,
-        cropStyle:CropStyle.circle
-        aspectRatioPresets: Platform.isAndroid
-        ? [
-        CropAspectRatioPreset.square,
-        ]
-            : [
-        CropAspectRatioPreset.square,
-        ],
-        androidUiSettings: AndroidUiSettings(
-    toolbarTitle: 'Cropper',
-    toolbarColor: Colors.deepOrange,
-    toolbarWidgetColor: Colors.white,
-        initAspectRatio: CropAspectRatioPreset.original,
-        lockAspectRatio: false),
-        iosUiSettings: IOSUiSettings(
-    title: 'Cropper',
-    ));
-    if (croppedFile != null) {
-    state = state.copyWith(imagePath: croppedFile.path);
+    Future<List<CoWork>> getCoWorkGoals() async {
+      try {
+        final snapshot = await FirebaseFirestore.instance
+            .collection('coWorkGoals')
+            .get();
+        print(snapshot);
 
-    // imageFile = croppedFile;
-    // setState(() {
-    //   state = AppState.cropped;
-    // });
+        return snapshot.docs.map((e) => CoWork.doc(e)).toList();
+      } catch (e) {
+        print('error:${e.toString()}');
+        rethrow;
+      }
     }
-  }
-
-  Future<void> addTeam() {
-    _checkKeyValidate();
-
-    return _teams
-        .add({
-          'full_name': '大久保　匠', // John Doe
-          // Stokes and Sons
-          'age': 22 // 42
-        })
-        .then((value) => print("Team Added"))
-        .catchError((Object error) => print("Failed to add team: $error"));
-  }
 
   Future<List<Genre>> getGenres() async {
     try {
@@ -133,41 +183,52 @@ class TeamRegistViewModel extends StateNotifier<TeamRegistViewModelState>
     }
   }
 
-// Future<void> onUpdate(String id) async {
-//   if (!fieldKey.currentState!.validate() ||
-//      ) {
-//     return;
-//   }
-//
-//   await TeamNotifier.onUpdate(
-//       id,
-//       const DateTimeStringConverter()
-//           .getDateTime(dateKey.currentState!.value!),
-//       int.parse(pointKey.currentState!.value!),
-//       const IntStringConverter()
-//           .getIntPoint(fieldKey.currentState!.value!.substring(0, 2)),
-//       activeNameKey.currentState!.value!,
-//       state.imagePath != '' ? File(state.imagePath) : null);
-// }
-//
-//
-// Future<Team?> getFromId(String id) async {
-//   return TeamNotifier.getFromId(id);
-// }
-//
-// Future<void> setOldData(String id) async {
-//   final result = await getFromId(id);
-//
-//   if (result == null) {
-//     return null;
-//   }
-//
-//   String imagePath = '';
-//
-//   if (result.field != null) {
-//     fieldKey.currentState?.didChange(kPointTextList[result.field - 1]);
-//   }
-//
-//   state = state.copyWith(imagePath: imagePath);
-// }
+  Future<void> addTeam() async {
+    checkKeyValidate();
+
+
+    //先にstorage
+    if (state.imagePath != '') {
+      await uploadFile(state.imagePath,
+          'team/ee/${basename(state.imagePath)}');
+    }
+
+    return _teams
+        .add({
+      'serviceShort': serviceShortKey.currentState!.value, // John Doe
+      'imageId' : state.imagePath,
+      'genreId' : state.selectedGenreId,
+      'serviceWorkId': state.selectedServiceId,
+      'coWorkGoalIds': state.coWorkList,
+      'vision': visionKey.currentState!.value,
+      'background': backgroundKey.currentState!.value
+    })
+        .then((value) {
+          print("Team Added");
+          print(value);
+
+        }
+          )
+        .catchError((Object error) => print("Failed to add team: $error"));
+  }
+
+  Future<void> onTapGallery(BuildContext context) async {
+    try {
+      final file = await ImagePicker().getImage(source: ImageSource.gallery);
+      if (file == null) {
+        return;
+      }
+      await _cropImage(file.path);
+    } on PlatformException {
+      if (await Permission.photos.isPermanentlyDenied) {
+        showRequestPermissionDialog(context, '写真のアクセスを許可する必要があります。');
+      }
+      return;
+    }
+  }
+
+  List<MultiSelectItem>_getCoworkItems(List<CoWork> coWorkGoals) {
+    return coWorkGoals.map((e) => MultiSelectItem(e.name,e.name)).toList();
+  }
+
 }

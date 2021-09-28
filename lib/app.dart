@@ -1,5 +1,4 @@
 import 'package:base_app/app_model.dart';
-import 'package:base_app/notifiers/user_profile/user_profile_notifier.dart';
 import 'package:base_app/pages/sign_up/sign_up_page.dart';
 import 'package:base_app/setting.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ import 'providers/navigator.dart';
 class App extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final provider = userProfileNotifierProvider;
+    // final provider = userProfileNotifierProvider;
 
     const locale = Locale('ja', 'JP');
     final model = AppModel();
@@ -40,11 +39,10 @@ class App extends HookWidget {
         stream: model.userState,
         initialData: UserState.waiting,
         builder: (context, AsyncSnapshot<UserState> snapshot) {
-          final UserState? state =
-              snapshot.connectionState == ConnectionState.waiting
-                  ? UserState.waiting
-                  : snapshot.data;
-          logger.info("MyApp(): userState = $state");
+          final state = snapshot.connectionState == ConnectionState.waiting
+              ? UserState.waiting
+              : snapshot.data;
+          logger.info('MyApp(): userState = $state');
           return _convertPage(state);
         },
       ),
@@ -56,16 +54,15 @@ class App extends HookWidget {
     switch (state) {
       case UserState.waiting: // 初期化中
         // return SplashPage();
-        return SignUpPage();
+        return const SignUpPage();
 
       case UserState.noLogin: // 未ログイン
-        return SignUpPage();
+        return const SignUpPage();
 
       case UserState.member: // サロンメンバー
-        return HomeIchiranPage();
-
-      default: // 不明
-        return SignUpPage();
+        return const HomeIchiranPage();
+      default:
+        return const SignUpPage();
     }
   }
 }
