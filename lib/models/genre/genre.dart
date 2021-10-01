@@ -4,12 +4,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Genre {
   final String id;
   final String name;
-  final Timestamp createdAt;
-  final Timestamp updatedAt;
+  final int order;
+
+  final Timestamp? createdAt;
+  final Timestamp? updatedAt;
 
   Genre._(
     this.id,
     this.name,
+    this.order,
     this.createdAt,
     this.updatedAt,
   );
@@ -19,8 +22,9 @@ class Genre {
     return Genre._(
       doc.id,
       data['name'] as String,
-      data['createdAt'] as Timestamp,
-      data['updatedAt'] as Timestamp,
+      data['order'] as int,
+      data['createdAt'] as Timestamp?,
+      data['updatedAt'] as Timestamp?,
     );
   }
 }

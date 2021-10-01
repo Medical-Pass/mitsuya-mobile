@@ -4,6 +4,7 @@ import 'package:base_app/colors.dart';
 import 'package:base_app/models/cowork/cowork.dart';
 import 'package:base_app/models/genre/genre.dart';
 import 'package:base_app/models/service_work/service_work.dart';
+import 'package:base_app/notifiers/genre/genre_notifier.dart';
 import 'package:base_app/repositories/cloud_storage/cloud_storage_repository.dart';
 import 'package:base_app/widgets/show_request_permission_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,13 +37,16 @@ final teamRegistViewModelProvider =
 class TeamRegistViewModel extends StateNotifier<TeamRegistViewModelState>
     with LocatorMixin {
   TeamRegistViewModel(this._read,) : super(TeamRegistViewModelState()) {
-    Future.delayed(Duration.zero, () async {});
+    Future.delayed(Duration.zero, () async {
+
+
+    });
   }
 
   final Reader _read;
 
-  // TeamNotifier get TeamNotifier =>
-  //     _read(teamRegistNotifierProvider);
+  GenreNotifier get genreNotifier =>
+      _read(genreNotifierProvider);
 
   final serviceShortKey = GlobalKey<FormFieldState<String>>();
   final serviceGenreKey = GlobalKey<FormFieldState<String>>();
@@ -87,7 +91,6 @@ class TeamRegistViewModel extends StateNotifier<TeamRegistViewModelState>
 
 
   CollectionReference _teams = FirebaseFirestore.instance.collection('teams');
-
 
   Future<void> showMultiSelect(BuildContext context) async {
 
@@ -147,6 +150,7 @@ class TeamRegistViewModel extends StateNotifier<TeamRegistViewModelState>
     try {
       final snapshot = await FirebaseFirestore.instance
           .collection('serviceWork')
+      .orderBy('order')
           .get();
 
       return snapshot.docs.map((e) => ServiceWork.doc(e)).toList();
@@ -160,6 +164,7 @@ class TeamRegistViewModel extends StateNotifier<TeamRegistViewModelState>
       try {
         final snapshot = await FirebaseFirestore.instance
             .collection('coWorkGoals')
+            .orderBy('order')
             .get();
         print(snapshot);
 
@@ -171,16 +176,7 @@ class TeamRegistViewModel extends StateNotifier<TeamRegistViewModelState>
     }
 
   Future<List<Genre>> getGenres() async {
-    try {
-      final snapshot = await FirebaseFirestore.instance
-          .collection('genres')
-          .orderBy('createdAt', descending: true)
-          .get();
-      return snapshot.docs.map((e) => Genre.doc(e)).toList();
-    } catch (e) {
-      print('error:${e.toString()}');
-      rethrow;
-    }
+    return genreNotifier.fetchAll();
   }
 
   Future<void> addTeam() async {

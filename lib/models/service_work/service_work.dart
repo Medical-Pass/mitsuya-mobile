@@ -4,12 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class ServiceWork {
   final String id;
   final String name;
+  final int order;
   final Timestamp? createdAt;
   final Timestamp? updatedAt;
 
   ServiceWork._(
     this.id,
     this.name,
+    this.order,
     this.createdAt,
     this.updatedAt,
   );
@@ -19,6 +21,7 @@ class ServiceWork {
     return ServiceWork._(
       doc.id,
       data['name'] as String,
+      data['order'] as int,
       data['createdAt'] as Timestamp?,
       data['updatedAt'] as Timestamp?,
     );

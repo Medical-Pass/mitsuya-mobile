@@ -15,24 +15,28 @@ class MainPage extends HookWidget {
 
     List<BottomNavigationBarItem> getBottomSheet() {
       var tmpList = [
+        // const BottomNavigationBarItem(
+        //   icon: Icon(
+        //     Icons.home_filled,
+        //   ),
+        //   label: 'ホーム',
+        // ),
         const BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home_filled,
-          ),
-          label: 'ホーム',
-        ),
-        const BottomNavigationBarItem(
-          icon: Icon(Icons.notifications),
-          label: 'お知らせ',
+          icon: Icon(Icons.chat),
+          label: 'トーク',
         ),
         BottomNavigationBarItem(
-          icon: const Icon(Icons.wallpaper),
-          label: '協働一覧',
+          icon: const Icon(Icons.search),
+          label: 'サーチ',
         ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.person),
-          label: 'マイページ',
-        ),
+        // BottomNavigationBarItem(
+        //   icon: const Icon(Icons.event),
+        //   label: 'イベント',
+        // ),
+        // BottomNavigationBarItem(
+        //   icon: const Icon(Icons.book),
+        //   label: 'ニュース',
+        // ),
       ];
 
       return tmpList;
@@ -45,8 +49,6 @@ class MainPage extends HookWidget {
           children: <Widget>[
             notifier.buildOffstageNavigator(0),
             notifier.buildOffstageNavigator(1),
-            notifier.buildOffstageNavigator(2),
-            notifier.buildOffstageNavigator(3),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

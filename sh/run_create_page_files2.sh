@@ -1,7 +1,7 @@
 #echo -n "Press directory name: "
 #read str
 
-for i in sign_in user_regist team_regist password_reset
+for i in talk search
 do
 
 cd  /Users/ookubotakumi/AndroidStudioProjects/mitsuya-mobile/lib/pages

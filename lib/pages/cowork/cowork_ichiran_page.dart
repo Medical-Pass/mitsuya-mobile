@@ -24,7 +24,12 @@ class CoworkIchiranPage extends HookWidget {
           body: SingleChildScrollView(
               child: Container(
                   padding: const EdgeInsets.all(10),
-                  child: Column(children: [])))),
+                  child: Column(
+                    children: [
+                      Icon(Icons.sports_esports_rounded),
+                      Icon(Icons.branding_watermark_rounded)
+                    ],
+                  )))),
     );
   }
 }

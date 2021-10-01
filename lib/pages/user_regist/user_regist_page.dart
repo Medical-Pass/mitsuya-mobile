@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:base_app/converters/date_time_string_converter.dart';
 import 'package:base_app/pages/team_regist/team_regist_page.dart';
 import 'package:base_app/pages/user_regist/user_regist_view_model.dart';
 import 'package:base_app/widgets/profile_avatar.dart';
+import 'package:base_app/widgets/show_bottom_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -22,6 +25,14 @@ class UserRegistPage extends HookWidget {
     final imagePath = useProvider(
             provider.state.select((UserRegistViewModelState state) => state))
         .imagePath;
+
+    final jobList = useProvider(
+            provider.state.select((UserRegistViewModelState state) => state))
+        .jobList;
+
+    final roleList = useProvider(
+            provider.state.select((UserRegistViewModelState state) => state))
+        .roleList;
 
     return GestureDetector(
       onTap: () {
@@ -93,16 +104,111 @@ class UserRegistPage extends HookWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text('3.役割'),
+                                  const Text('3.生年月日'),
                                   const SizedBox(height: 10),
                                   TextFormField(
-                                    key: viewModel.roleKey,
+                                    readOnly: true,
+                                    onTap: () async {
+                                      final today = DateTime.now();
+                                      await DatePicker.showDatePicker(context,
+                                          showTitleActions: true,
+                                          minTime:
+                                              DateTime(today.year - 100, 1, 1),
+                                          maxTime: DateTime(today.year, 12, 31),
+                                          theme: const DatePickerTheme(
+                                              itemStyle: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 18),
+                                              doneStyle: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16)),
+                                          onChanged: (date) {},
+                                          onConfirm: (date) {
+                                        viewModel.birthdayController.text =
+                                            const DateTimeStringConverter()
+                                                .getJapaneseDay2(date);
+                                      },
+                                          currentTime: DateTime.now(),
+                                          locale: LocaleType.jp);
+                                    },
+                                    key: viewModel.birthdayKey,
+                                    controller: viewModel.birthdayController,
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,
                                     validator: (String? value) {
                                       return null;
                                     },
                                     decoration: const InputDecoration(
+                                      prefixIcon: Icon(Icons.arrow_drop_down),
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 50),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 180,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text('4.職業'),
+                                  const SizedBox(height: 10),
+                                  TextFormField(
+                                      readOnly: true,
+                                      onTap: () async {
+                                        await showBottomPicker(
+                                            context,
+                                            jobList.map((e) => e.name).toList(),
+                                            viewModel.jobController,
+                                            '職業');
+                                      },
+                                      key: viewModel.jobKey,
+                                      controller: viewModel.jobController,
+                                      autovalidateMode:
+                                          AutovalidateMode.onUserInteraction,
+                                      validator: (String? value) {
+                                        return null;
+                                      },
+                                      decoration: const InputDecoration(
+                                          prefixIcon:
+                                              Icon(Icons.arrow_drop_down),
+                                          border: OutlineInputBorder(),
+                                          hintText: '名前を入力してください')),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 180,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text('5.役割'),
+                                  const SizedBox(height: 10),
+                                  TextFormField(
+                                    readOnly: true,
+                                    onTap: () async {
+                                      await showBottomPicker(
+                                          context,
+                                          roleList.map((e) => e.name).toList(),
+                                          viewModel.roleController,
+                                          '役割');
+                                    },
+                                    key: viewModel.roleKey,
+                                    controller: viewModel.roleController,
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    validator: (String? value) {
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                      prefixIcon: Icon(Icons.arrow_drop_down),
                                       border: OutlineInputBorder(),
                                     ),
                                   )

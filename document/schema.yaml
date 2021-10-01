@@ -28,6 +28,7 @@ teams: # collection
   users:
     documentId: auto
     userId: userId = auth.uid
+  name: string
   serviceShort: string
   imageId: string
   genreId: string
@@ -40,31 +41,26 @@ teams: # collection
 #target
 targets:
   documentId: auto
-  targetId: string
   name: string
 
 #genres
 genres:
   documentId: auto
-  genreId: string
   name: string
 
 #structures
 structures:
   documentId: auto
-  structureId: string
   name: string
 
 #purposes
 purposes:
   documentId: auto
-  purposeId: string
   name: string
 
 #finalGroups
 finalGroups:
   documentId: auto
-  finalGroupId: string
   name: string
 
 # 第２リリースで追加する?

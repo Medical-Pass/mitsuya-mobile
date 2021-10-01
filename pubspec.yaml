@@ -133,6 +133,8 @@ flutter:
   assets:
    - assets/
    - assets/images/
+   - assets/icons/
+
 
 
 flutter_native_splash:

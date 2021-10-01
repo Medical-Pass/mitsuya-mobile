@@ -16,9 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$UserRegistViewModelStateTearOff {
   const _$UserRegistViewModelStateTearOff();
 
-  _UserRegistViewModelState call({String imagePath = ''}) {
+  _UserRegistViewModelState call(
+      {String imagePath = '',
+      List<Job> jobList = const <Job>[],
+      List<Role> roleList = const <Role>[]}) {
     return _UserRegistViewModelState(
       imagePath: imagePath,
+      jobList: jobList,
+      roleList: roleList,
     );
   }
 }
@@ -29,6 +34,8 @@ const $UserRegistViewModelState = _$UserRegistViewModelStateTearOff();
 /// @nodoc
 mixin _$UserRegistViewModelState {
   String get imagePath => throw _privateConstructorUsedError;
+  List<Job> get jobList => throw _privateConstructorUsedError;
+  List<Role> get roleList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserRegistViewModelStateCopyWith<UserRegistViewModelState> get copyWith =>
@@ -40,7 +47,7 @@ abstract class $UserRegistViewModelStateCopyWith<$Res> {
   factory $UserRegistViewModelStateCopyWith(UserRegistViewModelState value,
           $Res Function(UserRegistViewModelState) then) =
       _$UserRegistViewModelStateCopyWithImpl<$Res>;
-  $Res call({String imagePath});
+  $Res call({String imagePath, List<Job> jobList, List<Role> roleList});
 }
 
 /// @nodoc
@@ -55,12 +62,22 @@ class _$UserRegistViewModelStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? imagePath = freezed,
+    Object? jobList = freezed,
+    Object? roleList = freezed,
   }) {
     return _then(_value.copyWith(
       imagePath: imagePath == freezed
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
+      jobList: jobList == freezed
+          ? _value.jobList
+          : jobList // ignore: cast_nullable_to_non_nullable
+              as List<Job>,
+      roleList: roleList == freezed
+          ? _value.roleList
+          : roleList // ignore: cast_nullable_to_non_nullable
+              as List<Role>,
     ));
   }
 }
@@ -72,7 +89,7 @@ abstract class _$UserRegistViewModelStateCopyWith<$Res>
           $Res Function(_UserRegistViewModelState) then) =
       __$UserRegistViewModelStateCopyWithImpl<$Res>;
   @override
-  $Res call({String imagePath});
+  $Res call({String imagePath, List<Job> jobList, List<Role> roleList});
 }
 
 /// @nodoc
@@ -90,27 +107,46 @@ class __$UserRegistViewModelStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? imagePath = freezed,
+    Object? jobList = freezed,
+    Object? roleList = freezed,
   }) {
     return _then(_UserRegistViewModelState(
       imagePath: imagePath == freezed
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
+      jobList: jobList == freezed
+          ? _value.jobList
+          : jobList // ignore: cast_nullable_to_non_nullable
+              as List<Job>,
+      roleList: roleList == freezed
+          ? _value.roleList
+          : roleList // ignore: cast_nullable_to_non_nullable
+              as List<Role>,
     ));
   }
 }
 
 /// @nodoc
 class _$_UserRegistViewModelState implements _UserRegistViewModelState {
-  _$_UserRegistViewModelState({this.imagePath = ''});
+  _$_UserRegistViewModelState(
+      {this.imagePath = '',
+      this.jobList = const <Job>[],
+      this.roleList = const <Role>[]});
 
   @JsonKey(defaultValue: '')
   @override
   final String imagePath;
+  @JsonKey(defaultValue: const <Job>[])
+  @override
+  final List<Job> jobList;
+  @JsonKey(defaultValue: const <Role>[])
+  @override
+  final List<Role> roleList;
 
   @override
   String toString() {
-    return 'UserRegistViewModelState(imagePath: $imagePath)';
+    return 'UserRegistViewModelState(imagePath: $imagePath, jobList: $jobList, roleList: $roleList)';
   }
 
   @override
@@ -119,12 +155,21 @@ class _$_UserRegistViewModelState implements _UserRegistViewModelState {
         (other is _UserRegistViewModelState &&
             (identical(other.imagePath, imagePath) ||
                 const DeepCollectionEquality()
-                    .equals(other.imagePath, imagePath)));
+                    .equals(other.imagePath, imagePath)) &&
+            (identical(other.jobList, jobList) ||
+                const DeepCollectionEquality()
+                    .equals(other.jobList, jobList)) &&
+            (identical(other.roleList, roleList) ||
+                const DeepCollectionEquality()
+                    .equals(other.roleList, roleList)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(imagePath);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(imagePath) ^
+      const DeepCollectionEquality().hash(jobList) ^
+      const DeepCollectionEquality().hash(roleList);
 
   @JsonKey(ignore: true)
   @override
@@ -134,11 +179,17 @@ class _$_UserRegistViewModelState implements _UserRegistViewModelState {
 }
 
 abstract class _UserRegistViewModelState implements UserRegistViewModelState {
-  factory _UserRegistViewModelState({String imagePath}) =
-      _$_UserRegistViewModelState;
+  factory _UserRegistViewModelState(
+      {String imagePath,
+      List<Job> jobList,
+      List<Role> roleList}) = _$_UserRegistViewModelState;
 
   @override
   String get imagePath => throw _privateConstructorUsedError;
+  @override
+  List<Job> get jobList => throw _privateConstructorUsedError;
+  @override
+  List<Role> get roleList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserRegistViewModelStateCopyWith<_UserRegistViewModelState> get copyWith =>

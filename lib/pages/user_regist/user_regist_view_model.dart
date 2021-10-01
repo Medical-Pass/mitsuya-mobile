@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:base_app/models/genre/genre.dart';
+import 'package:base_app/models/job/job.dart';
+import 'package:base_app/models/role/role.dart';
 import 'package:base_app/repositories/cloud_storage/cloud_storage_repository.dart';
 import 'package:base_app/widgets/show_request_permission_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,7 +19,9 @@ part 'user_regist_view_model.freezed.dart';
 
 @freezed
 class UserRegistViewModelState with _$UserRegistViewModelState {
-  factory UserRegistViewModelState({@Default('') String imagePath}) =
+  factory UserRegistViewModelState({@Default('') String imagePath,
+    @Default(<Job>[]) List<Job> jobList,
+    @Default(<Role>[]) List<Role> roleList,}) =
       _UserRegistViewModelState;
 }
 
@@ -31,7 +34,12 @@ class UserRegistViewModel extends StateNotifier<UserRegistViewModelState>
   UserRegistViewModel(
     this._read,
   ) : super(UserRegistViewModelState()) {
-    Future.delayed(Duration.zero, () async {});
+    Future.delayed(Duration.zero, () async {
+
+      await setJobs();
+      await setRoles();
+
+    });
   }
 
   final Reader _read;
@@ -40,11 +48,16 @@ class UserRegistViewModel extends StateNotifier<UserRegistViewModelState>
 
   final nameKey = GlobalKey<FormFieldState<String>>();
   final profileImageKey = GlobalKey<FormFieldState<String>>();
+  final birthdayKey = GlobalKey<FormFieldState<String>>();
+  final jobKey = GlobalKey<FormFieldState<String>>();
   final roleKey = GlobalKey<FormFieldState<String>>();
   final passionForServiceKey = GlobalKey<FormFieldState<String>>();
   final commentKey = GlobalKey<FormFieldState<String>>();
 
+  final birthdayController = TextEditingController();
   final genderController = TextEditingController();
+  final jobController = TextEditingController();
+  final roleController = TextEditingController();
 
   bool checkKeyValidate() {
     return nameKey.currentState!.validate() &&
@@ -54,6 +67,16 @@ class UserRegistViewModel extends StateNotifier<UserRegistViewModelState>
   }
 
   CollectionReference _users = FirebaseFirestore.instance.collection('users');
+
+
+  String getJobId(List<Job> jobList, String value) {
+    return jobList.where((e) => e.name == value).first.id;
+  }
+
+  String getRoleId(List<Role> roleList, String value) {
+    return roleList.where((e) => e.name == value).first.id;
+  }
+
 
   Future<void> addUser() async {
     checkKeyValidate();
@@ -72,21 +95,42 @@ class UserRegistViewModel extends StateNotifier<UserRegistViewModelState>
               ? 'user/${_auth.currentUser!.uid}/${basename(state.imagePath)}'
               : null,
           'name': nameKey.currentState!.value, // John Doe
-          'role': roleKey.currentState!.value,
-          'passionForService': passionForServiceKey.currentState!.value ?? null,
+          'birthday': birthdayKey.currentState!.value,
+          'jobId': jobKey.currentState!.value != null ?
+          getJobId(state.jobList, jobKey.currentState!.value!) : null,
+          'roleId': roleKey.currentState!.value != null ?
+          getRoleId(state.roleList, roleKey.currentState!.value!) : null,
+          'passionForService': passionForServiceKey.currentState!.value,
           'comment': commentKey.currentState!.value,
         })
         .then((value) => print("User Added"))
         .catchError((Object error) => print("Failed to add user: $error"));
   }
 
-  Future<List<Genre>> getGenres() async {
+  Future<void> setJobs() async {
     try {
       final snapshot = await FirebaseFirestore.instance
-          .collection('genres')
-          .orderBy('createdAt', descending: true)
+          .collection('jobs')
+          .orderBy('order', descending: false)
           .get();
-      return snapshot.docs.map((e) => Genre.doc(e)).toList();
+
+      state = state.copyWith(jobList: snapshot.docs.map((e) => Job.doc(e)).toList());
+
+
+    } catch (e) {
+      print('error:${e.toString()}');
+      rethrow;
+    }
+  }
+
+  Future<void> setRoles() async {
+    try {
+      final snapshot = await FirebaseFirestore.instance
+          .collection('roles')
+          .orderBy('order', descending: false)
+          .get();
+      state = state.copyWith(roleList: snapshot.docs.map((e) => Role.doc(e)).toList());
+
     } catch (e) {
       print('error:${e.toString()}');
       rethrow;
