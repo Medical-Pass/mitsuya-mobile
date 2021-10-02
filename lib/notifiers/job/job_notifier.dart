@@ -1,9 +1,7 @@
-import 'package:base_app/logger.dart';
 import 'package:base_app/models/job/job.dart';
 import 'package:base_app/repositories/cloud_firestore/cloud_firestore_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:uuid/uuid.dart';
 
 import 'job_state.dart';
 
@@ -42,26 +40,26 @@ class JobNotifier extends StateNotifier<JobState> {
   //   return Job.fromJson(_data);
   // }
 
-  Future<void> onSave(String name, int order) async {
-    final now = DateTime.now();
-    // final data = Job(id: const Uuid().v4(), createdAt: now, updatedAt: now);
-
-    final data = Job(
-        id: Uuid().v4(),
-        name: name,
-        order: order,
-        createdAt: now,
-        updatedAt: now);
-
-    await _jobs
-        .add({
-          'name': name,
-          'createdAt': now,
-          'updatedAt': now,
-        })
-        .then((value) => logger.info("job Added"))
-        .catchError((Object error) => logger.info("Failed to add job: $error"));
-
-    state = state.copyWith(data: state.data.toList()..insert(0, data));
-  }
+  // Future<void> onSave(String name, int order) async {
+  //   final now = DateTime.now();
+  //   // final data = Job(id: const Uuid().v4(), createdAt: now, updatedAt: now);
+  //
+  //   final data = Job(
+  //       id: Uuid().v4(),
+  //       name: name,
+  //       order: order,
+  //       createdAt: now,
+  //       updatedAt: now);
+  //
+  //   await _jobs
+  //       .add({
+  //         'name': name,
+  //         'createdAt': now,
+  //         'updatedAt': now,
+  //       })
+  //       .then((value) => logger.info("job Added"))
+  //       .catchError((Object error) => logger.info("Failed to add job: $error"));
+  //
+  //   state = state.copyWith(data: state.data.toList()..insert(0, data));
+  // }
 }

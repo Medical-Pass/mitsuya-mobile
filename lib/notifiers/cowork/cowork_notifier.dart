@@ -1,11 +1,12 @@
-import 'package:base_app/models/Cowork/Cowork.dart';
+import 'package:base_app/models/cowork/cowork.dart';
 import 'package:base_app/repositories/cloud_firestore/cloud_firestore_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../logger.dart';
 import 'cowork_state.dart';
 
-final CoworkNotifierProvider =
+final coworkNotifierProvider =
     StateNotifierProvider.autoDispose<CoworkNotifier>(
         (ref) => CoworkNotifier(ref.read));
 
@@ -13,7 +14,9 @@ class CoworkNotifier extends StateNotifier<CoworkState> {
   CoworkNotifier(
     this._read,
   ) : super(CoworkState()) {
-    fetchAll();
+    Future.delayed(Duration.zero, () async {
+      await fetchAll();
+    });
   }
 
   final Reader _read;
@@ -25,8 +28,9 @@ class CoworkNotifier extends StateNotifier<CoworkState> {
       _read(cloudFirestoreRepositoryProvider);
 
   Future<List<CoWork>> fetchAll() async {
-    final _data = await cloudFirestoreRepository.getAll('Coworks',
+    final _data = await cloudFirestoreRepository.getAll('coWorkGoals',
         orderBy: 'order', descending: false);
+    logger.info(_data);
 
     final data2 = _data.map((e) => CoWork.doc(e)).toList();
 

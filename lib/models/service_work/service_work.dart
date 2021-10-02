@@ -5,6 +5,7 @@ class ServiceWork {
   final String id;
   final String name;
   final int order;
+  final int? teamNum;
   final Timestamp? createdAt;
   final Timestamp? updatedAt;
 
@@ -12,6 +13,7 @@ class ServiceWork {
     this.id,
     this.name,
     this.order,
+    this.teamNum,
     this.createdAt,
     this.updatedAt,
   );
@@ -22,6 +24,7 @@ class ServiceWork {
       doc.id,
       data['name'] as String,
       data['order'] as int,
+      data['teamNum'] as int?,
       data['createdAt'] as Timestamp?,
       data['updatedAt'] as Timestamp?,
     );

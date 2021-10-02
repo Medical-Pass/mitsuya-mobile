@@ -12,7 +12,9 @@ class GenreNotifier extends StateNotifier<GenreState> {
   GenreNotifier(
     this._read,
   ) : super(GenreState()) {
-    fetchAll();
+    Future.delayed(Duration.zero, () async {
+      await fetchAll();
+    });
   }
 
   final Reader _read;
@@ -23,7 +25,7 @@ class GenreNotifier extends StateNotifier<GenreState> {
       _read(cloudFirestoreRepositoryProvider);
 
   Future<List<Genre>> fetchAll() async {
-    final _data = await cloudFirestoreRepository.getAll('jobs',
+    final _data = await cloudFirestoreRepository.getAll('genres',
         orderBy: 'order', descending: false);
 
     final data2 = _data.map((e) => Genre.doc(e)).toList();

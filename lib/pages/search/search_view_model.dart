@@ -5,7 +5,7 @@ part 'search_view_model.freezed.dart';
 
 @freezed
 class SearchViewModelState with _$SearchViewModelState {
-  factory SearchViewModelState({@Default('') String sample}) =
+  factory SearchViewModelState({@Default(0) int reloadCount}) =
       _SearchViewModelState;
 }
 

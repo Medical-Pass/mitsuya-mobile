@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$JobStateTearOff {
   const _$JobStateTearOff();
 
-  _JobState call({String? name}) {
+  _JobState call({List<Job> data = const <Job>[]}) {
     return _JobState(
-      name: name,
+      data: data,
     );
   }
 }
@@ -28,7 +28,7 @@ const $JobState = _$JobStateTearOff();
 
 /// @nodoc
 mixin _$JobState {
-  String? get name => throw _privateConstructorUsedError;
+  List<Job> get data => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $JobStateCopyWith<JobState> get copyWith =>
@@ -39,7 +39,7 @@ mixin _$JobState {
 abstract class $JobStateCopyWith<$Res> {
   factory $JobStateCopyWith(JobState value, $Res Function(JobState) then) =
       _$JobStateCopyWithImpl<$Res>;
-  $Res call({String? name});
+  $Res call({List<Job> data});
 }
 
 /// @nodoc
@@ -52,13 +52,13 @@ class _$JobStateCopyWithImpl<$Res> implements $JobStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? name = freezed,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Job>,
     ));
   }
 }
@@ -68,7 +68,7 @@ abstract class _$JobStateCopyWith<$Res> implements $JobStateCopyWith<$Res> {
   factory _$JobStateCopyWith(_JobState value, $Res Function(_JobState) then) =
       __$JobStateCopyWithImpl<$Res>;
   @override
-  $Res call({String? name});
+  $Res call({List<Job> data});
 }
 
 /// @nodoc
@@ -82,40 +82,41 @@ class __$JobStateCopyWithImpl<$Res> extends _$JobStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? name = freezed,
+    Object? data = freezed,
   }) {
     return _then(_JobState(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<Job>,
     ));
   }
 }
 
 /// @nodoc
 class _$_JobState implements _JobState {
-  _$_JobState({this.name});
+  _$_JobState({this.data = const <Job>[]});
 
+  @JsonKey(defaultValue: const <Job>[])
   @override
-  final String? name;
+  final List<Job> data;
 
   @override
   String toString() {
-    return 'JobState(name: $name)';
+    return 'JobState(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _JobState &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
 
   @JsonKey(ignore: true)
   @override
@@ -124,10 +125,10 @@ class _$_JobState implements _JobState {
 }
 
 abstract class _JobState implements JobState {
-  factory _JobState({String? name}) = _$_JobState;
+  factory _JobState({List<Job> data}) = _$_JobState;
 
   @override
-  String? get name => throw _privateConstructorUsedError;
+  List<Job> get data => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$JobStateCopyWith<_JobState> get copyWith =>

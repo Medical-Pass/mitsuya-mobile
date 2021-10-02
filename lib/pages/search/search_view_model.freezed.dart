@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SearchViewModelStateTearOff {
   const _$SearchViewModelStateTearOff();
 
-  _SearchViewModelState call({String sample = ''}) {
+  _SearchViewModelState call({int reloadCount = 0}) {
     return _SearchViewModelState(
-      sample: sample,
+      reloadCount: reloadCount,
     );
   }
 }
@@ -28,7 +28,7 @@ const $SearchViewModelState = _$SearchViewModelStateTearOff();
 
 /// @nodoc
 mixin _$SearchViewModelState {
-  String get sample => throw _privateConstructorUsedError;
+  int get reloadCount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchViewModelStateCopyWith<SearchViewModelState> get copyWith =>
@@ -40,7 +40,7 @@ abstract class $SearchViewModelStateCopyWith<$Res> {
   factory $SearchViewModelStateCopyWith(SearchViewModelState value,
           $Res Function(SearchViewModelState) then) =
       _$SearchViewModelStateCopyWithImpl<$Res>;
-  $Res call({String sample});
+  $Res call({int reloadCount});
 }
 
 /// @nodoc
@@ -54,13 +54,13 @@ class _$SearchViewModelStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? sample = freezed,
+    Object? reloadCount = freezed,
   }) {
     return _then(_value.copyWith(
-      sample: sample == freezed
-          ? _value.sample
-          : sample // ignore: cast_nullable_to_non_nullable
-              as String,
+      reloadCount: reloadCount == freezed
+          ? _value.reloadCount
+          : reloadCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -72,7 +72,7 @@ abstract class _$SearchViewModelStateCopyWith<$Res>
           $Res Function(_SearchViewModelState) then) =
       __$SearchViewModelStateCopyWithImpl<$Res>;
   @override
-  $Res call({String sample});
+  $Res call({int reloadCount});
 }
 
 /// @nodoc
@@ -88,41 +88,42 @@ class __$SearchViewModelStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? sample = freezed,
+    Object? reloadCount = freezed,
   }) {
     return _then(_SearchViewModelState(
-      sample: sample == freezed
-          ? _value.sample
-          : sample // ignore: cast_nullable_to_non_nullable
-              as String,
+      reloadCount: reloadCount == freezed
+          ? _value.reloadCount
+          : reloadCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 class _$_SearchViewModelState implements _SearchViewModelState {
-  _$_SearchViewModelState({this.sample = ''});
+  _$_SearchViewModelState({this.reloadCount = 0});
 
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: 0)
   @override
-  final String sample;
+  final int reloadCount;
 
   @override
   String toString() {
-    return 'SearchViewModelState(sample: $sample)';
+    return 'SearchViewModelState(reloadCount: $reloadCount)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SearchViewModelState &&
-            (identical(other.sample, sample) ||
-                const DeepCollectionEquality().equals(other.sample, sample)));
+            (identical(other.reloadCount, reloadCount) ||
+                const DeepCollectionEquality()
+                    .equals(other.reloadCount, reloadCount)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(sample);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(reloadCount);
 
   @JsonKey(ignore: true)
   @override
@@ -132,10 +133,10 @@ class _$_SearchViewModelState implements _SearchViewModelState {
 }
 
 abstract class _SearchViewModelState implements SearchViewModelState {
-  factory _SearchViewModelState({String sample}) = _$_SearchViewModelState;
+  factory _SearchViewModelState({int reloadCount}) = _$_SearchViewModelState;
 
   @override
-  String get sample => throw _privateConstructorUsedError;
+  int get reloadCount => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SearchViewModelStateCopyWith<_SearchViewModelState> get copyWith =>
